@@ -10,30 +10,31 @@ public class Tower : MonoBehaviour
     [SerializeField] private GameObject _enemy;
     [SerializeField] private float _fireRate = 4f;
     
-    private float _counter;
+    private float _cooldown;
+    ObjectPooler objectPooler;
 
     void Start()
     {
-        float _counter = _fireRate;
-    }
+        objectPooler = ObjectPooler.Instance;
+        float _cooldown = _fireRate;
 
+    }
 
     void Update()
     {
-        _counter -= Time.deltaTime;
-        if(_counter <= 0){
+        _cooldown -= Time.deltaTime;
+        if(_cooldown <= 0){
             createProjectile();
-            _counter = _fireRate;
+            _cooldown = _fireRate;
         }
     }
 
 
     void createProjectile(){
         GameObject _projectile;
-        _projectile = Instantiate(_projectilePrefab,transform.position,Quaternion.identity);
+        _projectile = objectPooler.SpawnFromPool("Projectile",transform.position,Quaternion.identity,_enemy.transform.position, this.transform.parent);
         //,GameObject.FindGameObjectWithTag("Canvas").transform
-        _projectile.transform.SetParent(this.transform.parent);
-        _projectile.GetComponent<Projectile>().getEnemy(_enemy.transform.position);
+                
     }
 }
 

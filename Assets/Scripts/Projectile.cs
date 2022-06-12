@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, IPooledObject
 {
     [SerializeField] float _speed = 10f;
     private Vector3 _enemyPosition;
-    void Start()
+    public void OnObjectSpawn()
     {
-        this.transform.DOMove(_enemyPosition,_speed).SetEase(Ease.Linear).OnStepComplete( () => Destroy( transform.gameObject ) );
+        this.transform.DOMove(_enemyPosition,_speed).SetEase(Ease.Linear).OnStepComplete( () => this.gameObject.SetActive(false) );
     }
-
 
     void Update()
     {
-        
+ 
     }
 
     public void getEnemy(Vector3 _enemyPos){

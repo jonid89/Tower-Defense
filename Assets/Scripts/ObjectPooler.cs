@@ -17,7 +17,7 @@ public class ObjectPooler : MonoBehaviour
     {
         Instance = this;
     }
-
+    
     #endregion
 
     public List<Pool> pools;
@@ -76,3 +76,4 @@ public class ObjectPooler : MonoBehaviour
         
     }
 }
+

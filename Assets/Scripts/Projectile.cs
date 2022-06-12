@@ -5,11 +5,11 @@ using DG.Tweening;
 
 public class Projectile : MonoBehaviour, IPooledObject
 {
-    [SerializeField] float _speed = 10f;
-    private Vector3 _enemyPosition;
+    [SerializeField] float speed = 10f;
+    private Vector3 enemyPosition;
     public void OnObjectSpawn()
     {
-        this.transform.DOMove(_enemyPosition,_speed).SetEase(Ease.Linear).OnStepComplete( () => this.gameObject.SetActive(false) );
+        this.transform.DOMove(enemyPosition,speed).SetEase(Ease.Linear).OnStepComplete( () => this.gameObject.SetActive(false) );
     }
 
     void Update()
@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour, IPooledObject
  
     }
 
-    public void getEnemy(Vector3 _enemyPos){
-        _enemyPosition = _enemyPos;
+    public void getEnemy(Vector3 enemyPos){
+        enemyPosition = enemyPos;
     }
 }

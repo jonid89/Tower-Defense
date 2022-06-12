@@ -17,7 +17,7 @@ public class ObjectPooler : MonoBehaviour
     {
         Instance = this;
     }
-    
+
     #endregion
 
     public List<Pool> pools;
@@ -42,7 +42,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, Vector3 _enemyPos, Transform parent)
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, Transform parent, Vector3 enemyPos)
     {
         if (!poolDictionary.ContainsKey(tag))
         {
@@ -55,14 +55,23 @@ public class ObjectPooler : MonoBehaviour
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
-        objectToSpawn.GetComponent<Projectile>().getEnemy(_enemyPos);
         objectToSpawn.transform.SetParent(parent);
-
-        IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
-
-        if (pooledObj != null)
+        
+        switch (tag)
         {
-            pooledObj.OnObjectSpawn();
+        case "Projectile":     
+            objectToSpawn.GetComponent<Projectile>().getEnemy(enemyPos);
+
+            IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
+
+            if (pooledObj != null)
+            {
+                pooledObj.OnObjectSpawn();
+            }
+            break;
+        case "Tower":
+            
+            break;
         }
 
         poolDictionary[tag].Enqueue(objectToSpawn);

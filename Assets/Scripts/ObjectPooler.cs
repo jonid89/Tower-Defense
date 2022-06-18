@@ -56,21 +56,27 @@ public class ObjectPooler : MonoBehaviour
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
         objectToSpawn.transform.SetParent(parent);
+
         
         switch (tag)
         {
         case "Projectile":     
             objectToSpawn.GetComponent<Projectile>().getEnemy(enemyPos);
 
+            /*if (pooledObj != null)
+            {
+                pooledObj.OnObjectSpawn();
+            }*/
+            break;
+        case "Tower":
+            
+            break;
+        case "Enemy":
             IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
-
             if (pooledObj != null)
             {
                 pooledObj.OnObjectSpawn();
             }
-            break;
-        case "Tower":
-            
             break;
         }
 

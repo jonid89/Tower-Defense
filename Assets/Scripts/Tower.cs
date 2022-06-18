@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private GameObject enemy;
     [SerializeField] private float fireRate = 4f;
     
@@ -33,7 +32,6 @@ public class Tower : MonoBehaviour
 
     void createProjectile(){
         GameObject projectile = objectPooler.SpawnFromPool("Projectile",transform.position,Quaternion.identity, this.transform.parent, enemy.transform.position);
-        //,GameObject.FindGameObjectWithTag("Canvas").transform
     }
 }
 

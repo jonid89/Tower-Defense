@@ -6,16 +6,25 @@ using DG.Tweening;
 
 public class EnemyMoveController : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-
     [SerializeField] private GameObject enemyWaypoints;
 
-    [SerializeField] private float duration = 10f;
+    #region Singleton
+    public static EnemyMoveController Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    #endregion
 
     private List<Transform> waypoints;
     private List<Vector3> waypointsPositions = new List<Vector3>();
     
+    private GameObject target;
+
     private int nextWaypointIndex;
+
+    
 
     private void OnEnable()
     {
@@ -27,12 +36,15 @@ public class EnemyMoveController : MonoBehaviour
         {
             waypointsPositions.Add(waypoint.position);
         }
-        MoveToThroughWaypoints();
     }
 
     // Update is called once per frame
-    private void MoveToThroughWaypoints()
+    public List<Vector3> getWaypoints()
     {
-        target.DOPath(waypointsPositions.ToArray(), duration, PathType.Linear, PathMode.Full3D).SetEase(Ease.Linear);
+        return waypointsPositions;
     }
+    
+
+
+
 }

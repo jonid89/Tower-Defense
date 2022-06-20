@@ -30,7 +30,14 @@ public class Tower : MonoBehaviour
     }
 
     void createProjectile(){
-        GameObject projectile = objectPooler.SpawnFromPool("Projectile",transform.position,Quaternion.identity, this.transform.parent, target.transform.position);
+        GameObject projectile = objectPooler.SpawnFromPool("Projectile",transform.position,Quaternion.identity, this.transform);
+    }
+
+    public Enemy getTarget(){
+        if(target!=null){
+            return target;
+        }
+        else return null;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -40,11 +47,7 @@ public class Tower : MonoBehaviour
             Enemy newEnemy = other.GetComponent<Enemy>();
             enemies.Add(newEnemy);
         }
-        Debug.Log(enemies[0]+" "+enemies[1]+" "+enemies[2]);
-        /*if(enemy == null)
-        {
-            //enemy = other.gameObject;
-        }*/
+
     }
 
     private void OnTriggerExit2D(Collider2D other)

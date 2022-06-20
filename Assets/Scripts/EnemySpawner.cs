@@ -29,6 +29,6 @@ public class EnemySpawner : MonoBehaviour
 
     
     void spawnEnemy(){
-        GameObject enemy = objectPooler.SpawnFromPool("Enemy",transform.position,Quaternion.identity, this.transform.parent, new Vector3(0,0,0));
+        GameObject enemy = objectPooler.SpawnFromPool("Enemy",transform.position,Quaternion.identity, this.transform.parent);
     }
 }

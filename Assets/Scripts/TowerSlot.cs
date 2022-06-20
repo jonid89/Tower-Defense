@@ -14,7 +14,7 @@ public class TowerSlot : MonoBehaviour
 
     void OnMouseDown(){
         if(hasTower != true){
-            GameObject tower = objectPooler.SpawnFromPool("Tower",transform.position,Quaternion.identity, this.transform.parent, new Vector3(0,0,0));
+            GameObject tower = objectPooler.SpawnFromPool("Tower",transform.position,Quaternion.identity, this.transform.parent);
             hasTower = true;
         }
     }

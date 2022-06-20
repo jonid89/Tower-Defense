@@ -6,10 +6,12 @@ using DG.Tweening;
 public class Projectile : MonoBehaviour, IPooledObject
 {
     [SerializeField] float speed = 10f;
+    [SerializeField] int damage = 5;
+    private Enemy enemy = null;
     private Vector3 enemyPosition;
     public void OnObjectSpawn()
     {
-        this.transform.DOMove(enemyPosition,speed).SetEase(Ease.Linear).OnStepComplete( () => this.gameObject.SetActive(false) );
+        fireAtEnemy();
     }
 
     void Update()
@@ -17,7 +19,18 @@ public class Projectile : MonoBehaviour, IPooledObject
  
     }
 
-    public void getEnemy(Vector3 enemyPos){
-        enemyPosition = enemyPos;
+    private void fireAtEnemy(){
+        enemy = this.transform.parent.GetComponent<Tower>().getTarget();
+        enemyPosition = enemy.transform.position;
+        
+        this.transform.DOMove(enemyPosition,speed)
+            .SetEase(Ease.Linear)
+            .OnStepComplete( () => 
+                {
+                    enemy.GetDamage(damage);
+                    this.gameObject.SetActive(false);
+                }
+                );
+
     }
 }

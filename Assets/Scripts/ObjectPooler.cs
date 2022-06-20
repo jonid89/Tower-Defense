@@ -42,7 +42,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, Transform parent, Vector3 enemyPos)
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, Transform parent)
     {
         if (!poolDictionary.ContainsKey(tag))
         {
@@ -62,7 +62,7 @@ public class ObjectPooler : MonoBehaviour
         switch (tag)
         {
         case "Projectile":     
-            objectToSpawn.GetComponent<Projectile>().getEnemy(enemyPos);
+            //objectToSpawn.GetComponent<Projectile>().getEnemy(target);
 
             if (pooledObj != null)
             {

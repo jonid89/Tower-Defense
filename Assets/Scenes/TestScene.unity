@@ -703,7 +703,7 @@ MonoBehaviour:
     size: 2
   - tag: Enemy
     prefab: {fileID: 765566474949297385, guid: de8cf4e3ed4ebe34c9b2c87fcf55ec06, type: 3}
-    size: 8
+    size: 10
 --- !u!1 &1681653334
 GameObject:
   m_ObjectHideFlags: 3
@@ -943,7 +943,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1232348480974677224, guid: 079920019d989b6429789e89b403bb32, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1232348480974677224, guid: 079920019d989b6429789e89b403bb32, type: 3}
       propertyPath: m_LocalPosition.x

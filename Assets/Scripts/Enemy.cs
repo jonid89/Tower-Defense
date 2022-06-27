@@ -5,27 +5,36 @@ using DG.Tweening;
 
 public class Enemy : MonoBehaviour, IPooledObject
 {
-
     [SerializeField] private float speed = 20f;
     [SerializeField] int maxHealth = 100;
-    private int currentHealth = 100;
+    private int currentHealth;
     EnemyMoveController enemyMoveController;
     private List<Vector3> waypointsPositions = new List<Vector3>();
+    private Tweener path;
+    HealthBar playerHealth;
 
 
     public void OnObjectSpawn()
     {
         enemyMoveController = EnemyMoveController.Instance;
+        playerHealth = HealthBar.Instance;
+        currentHealth = maxHealth;
+        
 
         waypointsPositions = enemyMoveController.getWaypoints();
-        speed = Random.Range(15,25);
-        this.transform.DOPath(waypointsPositions.ToArray(), speed, PathType.Linear, PathMode.Full3D).SetEase(Ease.Linear).OnStepComplete( () => this.gameObject.SetActive(false));
+        speed = Random.Range(20,30);
+        path = this.transform.DOPath(waypointsPositions.ToArray(), speed, PathType.Linear, PathMode.Full3D)
+            .SetEase(Ease.Linear)
+            .OnStepComplete( () => EndReached());
     }
 
-    void Start()
-    {
 
+    public void EndReached(){
+        playerHealth.DamagePlayer();
+        this.gameObject.SetActive(false);
+        
     }
+
 
     public void GetDamage(int damage)
     {
@@ -35,12 +44,10 @@ public class Enemy : MonoBehaviour, IPooledObject
         if (currentHealth <= 0 )
         {
             this.gameObject.SetActive(false);
+            path.Restart();
+            path.Kill();
         }
     }
 
 
-    void Update()
-    {
-        
-    }
 }

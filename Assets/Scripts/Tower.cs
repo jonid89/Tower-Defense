@@ -30,7 +30,7 @@ public class Tower : MonoBehaviour
     }
 
     void createProjectile(){
-        GameObject projectile = objectPooler.SpawnFromPool("Projectile",transform.position,Quaternion.identity, this.transform);
+        GameObject projectile = objectPooler.SpawnFromPool(ObjectPooler.PoolType.Projectile,transform.position,Quaternion.identity, this.transform);
     }
 
     public Enemy getTarget(){
@@ -57,7 +57,7 @@ public class Tower : MonoBehaviour
         {
             enemies.Remove(enemy);
         }
-        //enemy = null;
+        
     }
 
     private void GetCurrentTarget()

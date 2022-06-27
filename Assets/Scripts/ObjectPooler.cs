@@ -6,13 +6,20 @@ public class ObjectPooler : MonoBehaviour
 {
     [System.Serializable]
     public class Pool{
-        public string tag;
+        public PoolType type;
         public GameObject prefab;
         public int size;
     }
-    
+
+    public enum PoolType
+    {
+        Tower=0,
+        Enemy=10,
+        Projectile=20
+    }
+
     #region Singleton
-    public static ObjectPooler Instance;
+    public static ObjectPooler Instance { get; private set; }
     private void Awake()
     {
         Instance = this;
@@ -21,11 +28,11 @@ public class ObjectPooler : MonoBehaviour
     #endregion
 
     public List<Pool> pools;
-    public Dictionary<string, Queue<GameObject>> poolDictionary;
+    public Dictionary<PoolType, Queue<GameObject>> poolDictionary;
 
     void Start()
     {
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();    
+        poolDictionary = new Dictionary<PoolType, Queue<GameObject>>();    
 
         foreach (Pool pool in pools)
         {
@@ -38,19 +45,19 @@ public class ObjectPooler : MonoBehaviour
                 objectPool.Enqueue(obj);
             }
 
-            poolDictionary.Add(pool.tag, objectPool);
+            poolDictionary.Add(pool.type, objectPool);
         }
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, Transform parent)
+    public GameObject SpawnFromPool(PoolType type, Vector3 position, Quaternion rotation, Transform parent)
     {
-        if (!poolDictionary.ContainsKey(tag))
+        if (!poolDictionary.ContainsKey(type))
         {
-            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
+            Debug.LogWarning("Pool with tag " + type + " doesn't exist.");
             return null;
         }
         
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        GameObject objectToSpawn = poolDictionary[type].Dequeue();
 
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
@@ -59,20 +66,19 @@ public class ObjectPooler : MonoBehaviour
         IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
             
         
-        switch (tag)
+        switch (type)
         {
-        case "Projectile":     
-            //objectToSpawn.GetComponent<Projectile>().getEnemy(target);
+        case PoolType.Projectile:     
 
             if (pooledObj != null)
             {
                 pooledObj.OnObjectSpawn();
             }
             break;
-        case "Tower":
+        case PoolType.Tower:
             
             break;
-        case "Enemy":
+        case PoolType.Enemy:
             if (pooledObj != null)
             {
                 pooledObj.OnObjectSpawn();
@@ -80,7 +86,7 @@ public class ObjectPooler : MonoBehaviour
             break;
         }
 
-        poolDictionary[tag].Enqueue(objectToSpawn);
+        poolDictionary[type].Enqueue(objectToSpawn);
 
         return objectToSpawn;
     }

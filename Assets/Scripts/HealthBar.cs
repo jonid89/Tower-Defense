@@ -6,7 +6,7 @@ public class HealthBar : MonoBehaviour
 {
     [SerializeField] List<GameObject> lives = new List<GameObject>();
 
-    [SerializeField] GameObject gameOver;
+    [SerializeField] LevelManager levelManager;
 
     void Start()
     {
@@ -27,7 +27,7 @@ public class HealthBar : MonoBehaviour
         lives[0].SetActive(false);
         lives.RemoveAt(0);
         if (lives.Count == 0 ){
-            gameOver.SetActive(true);
+            levelManager.GameOver();            
         }
     }
 

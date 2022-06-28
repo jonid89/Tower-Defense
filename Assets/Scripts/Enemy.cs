@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Enemy : MonoBehaviour, IPooledObject
 {
-    [SerializeField] private float speed = 20f;
+    [SerializeField] private float averageSpeed = 30f;
     [SerializeField] int maxHealth = 100;
     private int currentHealth;
     EnemyMoveController enemyMoveController;
@@ -22,8 +22,8 @@ public class Enemy : MonoBehaviour, IPooledObject
         
 
         waypointsPositions = enemyMoveController.getWaypoints();
-        speed = Random.Range(20,30);
-        path = this.transform.DOPath(waypointsPositions.ToArray(), speed, PathType.Linear, PathMode.Full3D)
+        averageSpeed = Random.Range(averageSpeed-5,averageSpeed+5);
+        path = this.transform.DOPath(waypointsPositions.ToArray(), averageSpeed, PathType.Linear, PathMode.Full3D)
             .SetEase(Ease.Linear)
             .OnStepComplete( () => EndReached());
     }

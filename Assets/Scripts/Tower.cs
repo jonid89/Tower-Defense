@@ -2,22 +2,29 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 
 public class Tower : MonoBehaviour
 {
     [SerializeField] private float fireRate = 4f;
     private float cooldown;
-    ObjectPooler objectPooler;
+    ObjectPooler _objectPooler;
 
     private List<Enemy> enemies = new List<Enemy>();
     private Enemy target;
 
     void Start()
     {
-        objectPooler = ObjectPooler.Instance;
         float _cooldown = fireRate;        
     }
+
+    
+    [Inject]
+    public void Construct (ObjectPooler objectPooler) {
+        _objectPooler = objectPooler;
+    }
+    
 
     void Update()
     {
@@ -30,14 +37,11 @@ public class Tower : MonoBehaviour
     }
 
     void createProjectile(){
-        GameObject projectile = objectPooler.SpawnFromPool(ObjectPooler.PoolType.Projectile,transform.position,Quaternion.identity, this.transform);
+        GameObject projectile = _objectPooler.SpawnFromPool(ObjectPooler.PoolType.Projectile,transform.position,Quaternion.identity, this.transform);
     }
 
     public Enemy getTarget(){
-        if(target!=null){
-            return target;
-        }
-        else return null;
+        return target;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -62,15 +66,13 @@ public class Tower : MonoBehaviour
 
     private void GetCurrentTarget()
     {
-        if (enemies.Count <= 0)
-        {
-            target = null;
-            return;
-        }
-        
-        target = enemies[0];
+        target = enemies.Count > 0 ? enemies[0] : null;
     }
 
+    public class Factory : PlaceholderFactory<Tower>
+    {
+    }
+    
 }
 
 

@@ -8,14 +8,14 @@ public class EnemyMoveController : MonoBehaviour
 {
     [SerializeField] private GameObject enemyWaypoints;
 
-    #region Singleton
+    /*#region Singleton
     public static EnemyMoveController Instance;
     private void Awake()
     {
         Instance = this;
     }
 
-    #endregion
+    #endregion*/
 
     private List<Transform> waypoints;
     private List<Vector3> waypointsPositions = new List<Vector3>();

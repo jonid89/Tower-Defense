@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Zenject;
 
 public class Projectile : MonoBehaviour, IPooledObject
 {
@@ -14,10 +15,7 @@ public class Projectile : MonoBehaviour, IPooledObject
         fireAtEnemy();
     }
 
-    void Update()
-    {
- 
-    }
+
 
     private void fireAtEnemy(){
         enemy = this.transform.parent.GetComponent<Tower>().getTarget();
@@ -32,5 +30,9 @@ public class Projectile : MonoBehaviour, IPooledObject
                 }
                 );
 
+    }
+
+    public class Factory : PlaceholderFactory<Projectile>
+    {
     }
 }

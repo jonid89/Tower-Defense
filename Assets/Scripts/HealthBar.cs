@@ -8,20 +8,16 @@ public class HealthBar : MonoBehaviour
 
     [SerializeField] LevelManager levelManager;
 
-    void Start()
-    {
-        //gameController = GameController.Instance;
-    }
 
-
-    #region Singleton
+    /*#region Singleton
     public static HealthBar Instance { get; private set; }
     private void Awake()
     {
         Instance = this;
     }
 
-    #endregion
+    #endregion*/
+
 
     public void DamagePlayer(){
         lives[0].SetActive(false);

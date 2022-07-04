@@ -1,22 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private float spawnRate = 3f;
-    [SerializeField] private int enemiesCount = 5;
+    [SerializeField] private int enemiesCount = 1;
     [SerializeField] LevelManager levelManager;
-    
-    ObjectPooler objectPooler;
+
+    ObjectPooler _objectPooler;
     private float cooldown = 0f;    
     private List<GameObject> enemies = new List<GameObject>();
 
-    void Start()
-    {
-        objectPooler = ObjectPooler.Instance;
+    
 
+    [Inject]
+    public void Construct (ObjectPooler objectPooler) {
+        _objectPooler = objectPooler;
     }
+
 
 
     void Update()
@@ -27,14 +30,14 @@ public class EnemySpawner : MonoBehaviour
             cooldown = spawnRate;
             enemiesCount -= 1;
         }
-        if(enemiesCount <= 0){
+        else if(enemiesCount <= 0){
             StartCoroutine(LastEnemySent());
         }
     }
 
     
     void spawnEnemy(){
-        GameObject enemy = objectPooler.SpawnFromPool(ObjectPooler.PoolType.Enemy,transform.position,Quaternion.identity, this.transform.parent);
+        GameObject enemy = _objectPooler.SpawnFromPool(ObjectPooler.PoolType.Enemy,transform.position,Quaternion.identity, this.transform.parent);
         enemies.Add(enemy);
     }
 

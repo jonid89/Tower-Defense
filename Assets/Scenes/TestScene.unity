@@ -1793,7 +1793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyMoveController: {fileID: 772216357}
   _healthBar: {fileID: 1764373679}
-  _objectPooler: {fileID: 0}
+  _objectPooler: {fileID: 1333275945}
 --- !u!114 &1751188765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1809,8 +1809,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 1751188764}
-  _installerPrefabs:
-  - {fileID: 0}
+  _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
     m_PersistentCalls:

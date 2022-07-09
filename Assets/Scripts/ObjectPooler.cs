@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class ObjectPooler : MonoBehaviour
+public class ObjectPooler : MonoBehaviour, IInitializable
 {
-    Enemy.Factory _enemyFactory;
-    Tower.Factory _towerFactory;
-    Projectile.Factory _projectileFactory;
+    private Enemy.Factory _enemyFactory;
+    private Tower.Factory _towerFactory;
+    private Projectile.Factory _projectileFactory;
 
     [System.Serializable]
     public class Pool{
@@ -46,7 +46,7 @@ public class ObjectPooler : MonoBehaviour
     public List<Pool> pools;
     public Dictionary<PoolType, Queue<GameObject>> poolDictionary;
 
-    void Start()
+    public void Initialize()
     {
         poolDictionary = new Dictionary<PoolType, Queue<GameObject>>();    
 
@@ -56,15 +56,21 @@ public class ObjectPooler : MonoBehaviour
 
             for (int i = 0; i < pool.size; i++)
             {
-                GameObject obj; // = Instantiate(pool.prefab)
-
+                GameObject obj = new GameObject(); 
+                
                 switch (pool.type)
                 {
                     case PoolType.Enemy:
-                        obj = _enemyFactory.Create();
+                        obj = _enemyFactory.Create().gameObject;
+                        break;
+                    case PoolType.Tower:
+                        obj = _towerFactory.Create().gameObject;
+                        break;
+                    case PoolType.Projectile:
+                        obj = _projectileFactory.Create().gameObject;
                         break;
                 }
-
+                Debug.Log(obj);
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
             }

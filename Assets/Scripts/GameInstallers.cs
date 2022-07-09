@@ -16,20 +16,23 @@ public class GameInstallers : MonoInstaller
     private ObjectPooler _objectPooler;
     
     private GameObject EnemyPrefab;
+
+    private GameObject TowerPrefab;
+    
+    private GameObject ProjectilePrefab;
     
     public override void InstallBindings()
     {
-        Debug.Log(_enemyMoveController);
-        Debug.Log(_healthBar);
+        /*Container.Bind<GameOverPanel>().FromInstance(_gameOverPanel).AsSingle().NonLazy();
+        Container.Bind<LevelWonPanel>().FromInstance(_levelWonPanel).AsSingle().NonLazy();*/
+        Container.BindInterfacesTo<ObjectPooler>();
         Container.Bind<EnemyMoveController>().FromInstance(_enemyMoveController).AsSingle().NonLazy();
         Container.Bind<HealthBar>().FromInstance(_healthBar).AsSingle().NonLazy();
         Container.Bind<ObjectPooler>().FromInstance(_objectPooler).AsSingle().NonLazy();
-        // Container.Bind<Enemy>().AsTransient();
         Container.BindFactory<Enemy, Enemy.Factory>().FromComponentInNewPrefab(EnemyPrefab);
-        // Container.Bind<ObjectPooler>().AsSingle().NonLazy();
-
-        //Container.Bind<IEnemy>().To<Enemy>().FromFactory<EnemyFactory>();
-
+        Container.BindFactory<Tower, Tower.Factory>().FromComponentInNewPrefab(TowerPrefab);
+        Container.BindFactory<Projectile, Projectile.Factory>().FromComponentInNewPrefab(ProjectilePrefab);
+        
     }
 
 

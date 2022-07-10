@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour, IPooledObject
 
 
     public void EndReached(){
-        playerHealth.DamagePlayer();
+        //playerHealth.DamagePlayer();
         this.gameObject.SetActive(false);
         
     }

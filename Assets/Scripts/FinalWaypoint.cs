@@ -14,12 +14,11 @@ public class FinalWaypoint : MonoBehaviour
         playerHealth = HealthBar.Instance;
         
         this.OnTriggerEnter2DAsObservable()
-            .Select(collision => collision.CompareTag("Enemy"))
+            .Where(collision => collision.CompareTag("Enemy"))
             .Subscribe(_ =>
                     playerHealth.DamagePlayer()
             );
     }
-
 
     
 }

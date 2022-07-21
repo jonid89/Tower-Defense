@@ -9,8 +9,8 @@ public class AppInstaller : MonoInstaller
     [SerializeField] ButtonNumberView _buttonNumberView;
 
     public override void InstallBindings()
-    {
-        Container.Bind<ButtonNumberController>().AsSingle();
+    {        
+        Container.Bind<ButtonNumberController>().AsSingle().NonLazy();
         Container.Bind<ButtonNumberView>().FromInstance(_buttonNumberView).AsSingle();
         
     }

@@ -10,24 +10,21 @@ using Zenject;
 public class ButtonNumberView : MonoBehaviour
 {
     [SerializeField] private Text text; 
-    ButtonNumberController _buttonNumberController;
-
-    [Inject]
-    public void Construct (ButtonNumberController buttonNumberController) {
-        _buttonNumberController = buttonNumberController;
-    }
+    [SerializeField] private Button button;
+    public Button myButton => button; 
 
 
     private void Start()
     {
-        this.GetComponent<Button>().OnClickAsObservable()
-            .Subscribe(_ => _buttonNumberController.ButtonClick());
+        
     }
 
 
-    public void UpdateNumber(int number){
+    public void UpdateNumber(string number){
         Debug.Log(number);
-        text.text = number.ToString();
+        text.text = number;
     }
+
+    
     
 }

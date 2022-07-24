@@ -6,13 +6,17 @@ using Zenject;
 
 public class AppInstaller : MonoInstaller
 {
-    [SerializeField] ButtonNumberView _buttonNumberView;
+    [SerializeField] GameObject _buttonNumberView;
+    //[SerializeField] GameObject _canvas;
+    
 
     public override void InstallBindings()
     {        
-        Container.Bind<ButtonNumberController>().AsSingle().NonLazy();
-        Container.Bind<ButtonNumberView>().FromInstance(_buttonNumberView).AsSingle();
         
+        //Container.Bind<Canvas>().FromComponentInNewPrefab(_canvas).AsSingle();
+        //Container.Bind<ButtonNumberView>().FromComponentInNewPrefab(_buttonNumberView).UnderTransform(_canvas.transform).AsSingle();
+        Container.BindFactory<ButtonNumberView, ButtonNumberView.Factory>().FromComponentInNewPrefab(_buttonNumberView).AsSingle().NonLazy();
+        Container.Bind<ButtonNumberController>().AsSingle().NonLazy();
     }
 
 }

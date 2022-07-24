@@ -43,4 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c94b8cf5b45fc4f9636d6163bbd9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonNumberView: {fileID: 0}
+  _buttonNumberView: {fileID: 4256096334195610342, guid: ea7dd5e28ad072e48b5453087128df8e, type: 3}
+  _canvas: {fileID: 3845234835642207113, guid: b1e45fee543fada4a8dc386e432b4641, type: 3}

@@ -11,14 +11,12 @@ public class ButtonNumberView : MonoBehaviour
 {
     [SerializeField] private Text text; 
     [SerializeField] private Button button;
-    public Button myButton => button; 
-    private GameObject canvas;
 
+
+    public Button myButton => button; 
 
     private void Start()
     {
-        canvas = FindObjectOfType<Canvas>().gameObject;
-        this.transform.parent = canvas.transform;
         this.transform.position = new Vector3 (Screen.width * 0.5f, Screen.height * 0.5f, 0);
     }
 
@@ -31,7 +29,6 @@ public class ButtonNumberView : MonoBehaviour
     
     public class Factory : PlaceholderFactory<ButtonNumberView>
     {
-        
     }
     
 }

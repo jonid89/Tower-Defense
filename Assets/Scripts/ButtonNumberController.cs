@@ -6,15 +6,13 @@ using UniRx;
 
 public class ButtonNumberController
 {
-    ButtonNumberView.Factory _buttonNumberViewFactory;
-
+    
     ButtonNumberView _buttonNumberView;
 
     private int number = 0;
 
-    public ButtonNumberController(ButtonNumberView.Factory buttonNumberViewFactory) {
-        _buttonNumberViewFactory = buttonNumberViewFactory;
-        _buttonNumberView = _buttonNumberViewFactory.Create();
+    public ButtonNumberController(ButtonNumberView buttonNumberView) {
+        _buttonNumberView = buttonNumberView;
         _buttonNumberView.myButton.OnClickAsObservable()
             .Subscribe(_ => ButtonClick());
     }

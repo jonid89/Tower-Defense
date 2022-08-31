@@ -27,7 +27,7 @@ public class ButtonNumberView : MonoBehaviour
     }
 
     
-    public class Factory : PlaceholderFactory<ButtonNumberView>
+    public class Pool : MemoryPool<ButtonNumberView>
     {
     }
     

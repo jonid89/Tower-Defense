@@ -6,7 +6,7 @@ using UniRx;
 
 public class ObjectSpawner
 {
-    
+/*    
     ButtonNumberView.Factory _buttonNumberViewFactory;
 
     ButtonNumberView _buttonNumberView;
@@ -17,5 +17,5 @@ public class ObjectSpawner
         _buttonNumberViewFactory = buttonNumberViewFactory;
         _buttonNumberView = _buttonNumberViewFactory.Create();
     }
-
+*/
 }

@@ -7,10 +7,9 @@ using UniRx;
 public class ObjectSpawner
 {
     
-
-    public ObjectSpawner(ButtonNumberView.Factory buttonNumberViewFactory, ButtonNumberController.Factory buttonNumberControllerFactory){
-        var buttonNumberView = buttonNumberViewFactory.Create();
-        buttonNumberControllerFactory.Create(buttonNumberView);
+    public ObjectSpawner(ButtonNumberView.Pool buttonNumberViewPool, ButtonNumberController.Pool buttonNumberControllerPool){
+        var buttonNumberView = buttonNumberViewPool.Spawn(0);
+        buttonNumberControllerPool.Spawn(buttonNumberView);
     }
 
 }

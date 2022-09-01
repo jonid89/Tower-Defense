@@ -12,8 +12,20 @@ public class ButtonNumberView : MonoBehaviour
     [SerializeField] private Text text; 
     [SerializeField] private Button button;
 
-
     public Button myButton => button; 
+
+    [Inject]
+    public void Construct()
+    {
+        Reset(0);
+    }
+
+    void Reset(int resetNumber){
+        string _resetNumber = resetNumber.ToString();
+        text.text = _resetNumber;
+    }
+
+    
 
     private void Start()
     {
@@ -22,13 +34,15 @@ public class ButtonNumberView : MonoBehaviour
 
 
     public void UpdateNumber(string number){
-        //Debug.Log(number);
         text.text = number;
     }
 
     
-    public class Factory : PlaceholderFactory<ButtonNumberView>
+    public class Pool : MonoMemoryPool<int, ButtonNumberView>
     {
+        protected override void Reinitialize(int resetNumber, ButtonNumberView buttonNumberView){
+            buttonNumberView.Reset(resetNumber);
+        }
     }
     
 }

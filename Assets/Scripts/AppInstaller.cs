@@ -13,7 +13,7 @@ public class AppInstaller : MonoInstaller
     {        
         Container.Bind<ObjectSpawner>().AsSingle().NonLazy();
         ButtonInstaller.Install(Container);
-        Container.BindFactory<ButtonNumberView, ButtonNumberView.Factory>().FromComponentInNewPrefab(_buttonNumberView).UnderTransformGroup("Canvas").NonLazy();
+        Container.BindMemoryPool<ButtonNumberView, ButtonNumberView.Pool>().WithInitialSize(10).FromComponentInNewPrefab(_buttonNumberView).UnderTransformGroup("Canvas").NonLazy();
     }
 
 }

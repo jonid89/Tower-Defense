@@ -5,6 +5,6 @@ public class ButtonInstaller : Installer<ButtonInstaller>
 {
     public override void InstallBindings()
     {
-        Container.BindFactory<ButtonNumberView, ButtonNumberController, ButtonNumberController.Factory>();
+        Container.BindMemoryPool<ButtonNumberController, ButtonNumberController.Pool>();
     }
 }

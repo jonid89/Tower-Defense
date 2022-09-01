@@ -9,22 +9,31 @@ public class ButtonNumberController
     
     ButtonNumberView _buttonNumberView;
 
-    private int number = 0;
+    private int _clicks;
 
-    public ButtonNumberController(ButtonNumberView buttonNumberView) {
+    public ButtonNumberController(ButtonNumberView buttonNumberView){
+        Reset(buttonNumberView);
         _buttonNumberView = buttonNumberView;
         _buttonNumberView.myButton.OnClickAsObservable()
             .Subscribe(_ => ButtonClick());
     }
 
+    void Reset(ButtonNumberView buttonNumberView){
+        _clicks = 0;
+        _buttonNumberView = buttonNumberView;
+    }
+        
+
     public void ButtonClick(){
-        //Debug.Log("clicked");
-        number ++;
-        _buttonNumberView.UpdateNumber(number.ToString());
+        _clicks ++;
+        _buttonNumberView.UpdateNumber(_clicks.ToString());
 
     }
 
-    public class Factory : PlaceholderFactory<ButtonNumberView, ButtonNumberController>
+    public class Pool : MemoryPool<ButtonNumberView, ButtonNumberController>
     {
+        protected override void Reinitialize(ButtonNumberView buttonNumberView, ButtonNumberController buttonNumberController){
+            buttonNumberController.Reset(buttonNumberView);
+        }
     }
 }

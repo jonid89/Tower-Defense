@@ -23,4 +23,8 @@ public class ButtonNumberController
         _buttonNumberView.UpdateNumber(number.ToString());
 
     }
+
+    public class Factory : PlaceholderFactory<ButtonNumberView, ButtonNumberController>
+    {
+    }
 }

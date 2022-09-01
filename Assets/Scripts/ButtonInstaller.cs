@@ -1,10 +1,10 @@
 using UnityEngine;
 using Zenject;
 
-public class ButtonInstaller : MonoInstaller
+public class ButtonInstaller : Installer<ButtonInstaller>
 {
     public override void InstallBindings()
     {
-        Container.Bind<ButtonNumberController>().AsSingle();
+        Container.BindFactory<ButtonNumberView, ButtonNumberController, ButtonNumberController.Factory>();
     }
 }

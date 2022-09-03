@@ -11,9 +11,11 @@ public class AppInstaller : MonoInstaller
 
     public override void InstallBindings()
     {        
+        Container.Bind<ButtonGrid>().AsSingle().NonLazy();
         Container.Bind<ObjectSpawner>().AsSingle().NonLazy();
         ButtonInstaller.Install(Container);
         Container.BindFactory<ButtonNumberView, ButtonNumberView.Factory>().FromComponentInNewPrefab(_buttonNumberView).UnderTransformGroup("Canvas").NonLazy();
+        
     }
 
 }

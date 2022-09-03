@@ -6,11 +6,30 @@ using UniRx;
 
 public class ObjectSpawner
 {
-    
+    private int listSize = 9;
 
-    public ObjectSpawner(ButtonNumberView.Factory buttonNumberViewFactory, ButtonNumberController.Factory buttonNumberControllerFactory){
-        var buttonNumberView = buttonNumberViewFactory.Create();
-        buttonNumberControllerFactory.Create(buttonNumberView);
+    private List<ButtonNumberView> buttonNumberViewList = new List<ButtonNumberView>();
+
+    public ObjectSpawner(ButtonNumberView.Factory buttonNumberViewFactory, ButtonNumberController.Factory buttonNumberControllerFactory, ButtonGrid buttonGrid){
+        for(int i=0; i < listSize; i++){
+            var buttonNumberView = buttonNumberViewFactory.Create();
+            Vector2 position = new Vector2(-250+250*(i%3),-50+50*(i/3));
+            buttonNumberView.SetPosition(position);
+            buttonNumberControllerFactory.Create(buttonNumberView);
+            buttonNumberViewList.Add(buttonNumberView);
+            
+        }
+       
+        
     }
+
+
+
+    /*private void MakeGrid(){
+        for(int i=0; i < listSize; i++){
+            buttonNumberViewList[i].gameObject.GetComponent<RectTransform>().localPosition = new Vector2;
+        }
+
+    }*/
 
 }

@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using UniRx;
 
-public class ButtonNumberController
+public class ButtonNumberController : IDisposable
 {
     
     ButtonNumberView _buttonNumberView;
@@ -15,12 +16,17 @@ public class ButtonNumberController
         _buttonNumberView = buttonNumberView;
         _buttonNumberView.myButton.OnClickAsObservable()
             .Subscribe(_ => ButtonClick());
+            //.AddTo(this);
     }
 
     public void ButtonClick(){
         //Debug.Log("clicked");
         number ++;
         _buttonNumberView.UpdateNumber(number.ToString());
+
+    }
+
+    public void Dispose(){
 
     }
 

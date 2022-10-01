@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 22882f84c70b9a747ba4829a279ba598
+guid: dab92deadf4ad784188b036930c22451
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8618663976898325987
-    second: projectiles_0
+      213: -3966714676231797698
+    second: CannonTower_0
   - first:
-      213: -702417484383542198
-    second: projectiles_1
+      213: -8261208341742272984
+    second: CannonTower_1
   - first:
-      213: -931240730793808255
-    second: projectiles_2
+      213: -6090442593986583361
+    second: CannonTower_2
   - first:
-      213: -7558673754538462546
-    second: projectiles_3
+      213: -7230508058445466690
+    second: CannonTower_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,85 +127,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: projectiles_0
+      name: CannonTower_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 134
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3
+        y: 1
+        width: 43
+        height: 68
+      alignment: 9
+      pivot: {x: 0.5, y: 0.17}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3edea7d2935ab9770800000000000000
-      internalID: 8618663976898325987
+      spriteID: e3400edb40663f8c0800000000000000
+      internalID: -3966714676231797698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: projectiles_1
+      name: CannonTower_1
       rect:
         serializedVersion: 2
-        x: 11
-        y: 92
-        width: 17
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 52
+        y: 0
+        width: 43
+        height: 75
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a44ab4ff4038046f0800000000000000
-      internalID: -702417484383542198
+      spriteID: 82e35fe68ca4a5d80800000000000000
+      internalID: -8261208341742272984
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: projectiles_2
+      name: CannonTower_2
       rect:
         serializedVersion: 2
-        x: 13
-        y: 50
-        width: 17
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 100
+        y: 0
+        width: 43
+        height: 72
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18ee8a04d719313f0800000000000000
-      internalID: -931240730793808255
+      spriteID: fb46584bab66a7ba0800000000000000
+      internalID: -6090442593986583361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: projectiles_3
+      name: CannonTower_3
       rect:
         serializedVersion: 2
-        x: 10
-        y: 3
-        width: 26
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 147
+        y: 0
+        width: 43
+        height: 72
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea2baaf84423a1790800000000000000
-      internalID: -7558673754538462546
+      spriteID: eb332ceca3318ab90800000000000000
+      internalID: -7230508058445466690
       vertices: []
       indices: 
       edges: []

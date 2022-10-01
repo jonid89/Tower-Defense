@@ -7,7 +7,7 @@ using Zenject;
 public class GameInstallers : MonoInstaller
 {
     [SerializeField]
-    private EnemyMoveController _enemyMoveController;
+    private EnemyPath _enemyMoveController;
     
     [SerializeField]
     private HealthBar _healthBar;
@@ -29,10 +29,10 @@ public class GameInstallers : MonoInstaller
         /*Container.Bind<GameOverPanel>().FromInstance(_gameOverPanel).AsSingle().NonLazy();
         Container.Bind<LevelWonPanel>().FromInstance(_levelWonPanel).AsSingle().NonLazy();*/
         //Container.BindInterfacesAndSelfTo<ObjectPooler>().AsSingle();
-        Container.Bind<EnemyMoveController>().FromInstance(_enemyMoveController).AsSingle().NonLazy();
+        Container.Bind<EnemyPath>().FromInstance(_enemyMoveController).AsSingle().NonLazy();
         Container.Bind<HealthBar>().FromInstance(_healthBar).AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<ObjectPooler>().FromInstance(_objectPooler).AsSingle().NonLazy();
-        Container.BindFactory<HealthBar, EnemyMoveController, Enemy, Enemy.Factory>().FromComponentInNewPrefab(EnemyPrefab);
+        Container.BindFactory<HealthBar, EnemyPath, EnemyController, EnemyController.Factory>().FromComponentInNewPrefab(EnemyPrefab);
         Container.BindFactory<Tower, Tower.Factory>().FromComponentInNewPrefab(TowerPrefab);
         Container.BindFactory<Projectile, Projectile.Factory>().FromComponentInNewPrefab(ProjectilePrefab);
         

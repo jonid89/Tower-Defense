@@ -5,13 +5,13 @@ using Zenject;
 
 public class ObjectPooler : MonoBehaviour, IInitializable
 {
-    private Enemy.Factory _enemyFactory;
+    private EnemyController.Factory _enemyFactory;
     private Tower.Factory _towerFactory;
     private Projectile.Factory _projectileFactory;
 
     private HealthBar _healthBar;
 
-    private EnemyMoveController _enemyMoveController;
+    private EnemyPath _enemyMoveController;
 
     [System.Serializable]
     public class Pool{
@@ -37,7 +37,7 @@ public class ObjectPooler : MonoBehaviour, IInitializable
     #endregion*/
     
     [Inject]
-    public void Construct (HealthBar healthBar, EnemyMoveController enemyMoveController, Enemy.Factory enemyFactory, Tower.Factory towerFactory, Projectile.Factory projectileFactory) 
+    public void Construct (HealthBar healthBar, EnemyPath enemyMoveController, EnemyController.Factory enemyFactory, Tower.Factory towerFactory, Projectile.Factory projectileFactory) 
     {
         _enemyFactory = enemyFactory;
         _towerFactory = towerFactory;

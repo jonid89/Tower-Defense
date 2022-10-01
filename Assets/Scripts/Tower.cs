@@ -11,8 +11,8 @@ public class Tower : MonoBehaviour
     private float cooldown;
     ObjectPooler _objectPooler;
 
-    private List<Enemy> enemies = new List<Enemy>();
-    private Enemy target;
+    private List<EnemyController> enemies = new List<EnemyController>();
+    private EnemyController target;
 
     void Start()
     {
@@ -40,7 +40,7 @@ public class Tower : MonoBehaviour
         GameObject projectile = _objectPooler.SpawnFromPool(ObjectPooler.PoolType.Projectile,transform.position,Quaternion.identity, this.transform);
     }
 
-    public Enemy getTarget(){
+    public EnemyController getTarget(){
         return target;
     }
 
@@ -48,7 +48,7 @@ public class Tower : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Enemy newEnemy = other.GetComponent<Enemy>();
+            EnemyController newEnemy = other.GetComponent<EnemyController>();
             enemies.Add(newEnemy);
         }
 
@@ -56,7 +56,7 @@ public class Tower : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Enemy enemy = other.GetComponent<Enemy>();
+        EnemyController enemy = other.GetComponent<EnemyController>();
         if (enemies.Contains(enemy))        
         {
             enemies.Remove(enemy);

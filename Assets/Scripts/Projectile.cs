@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour, IPooledObject
 {
     [SerializeField] float speed = 10f;
     [SerializeField] int damage = 5;
-    private Enemy enemy = null;
+    private EnemyController enemy = null;
     private Vector3 enemyPosition;
     public void OnObjectSpawn()
     {

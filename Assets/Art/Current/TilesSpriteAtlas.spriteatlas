@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TilesSpriteAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -6226850810964693312, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: 3337396998886297453, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: 1198695968076843429, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: -776988338569666051, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: -2547434651817664341, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: -761163136850848398, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: -1345449338617943939, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: -7876657493515706056, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: 3695711760185965823, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: -1663903024137564937, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: 8381201976308039046, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: 9023182650430795289, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: 4003198608858907136, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: 1377675252477416570, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: 4999597204712203498, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: -6701596439569825802, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: -4018070362304766166, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: 6036219419524941969, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: -9189817943026081347, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: -5939441588890561654, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: 6314296640519126449, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: -1187726648603941085, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  - {fileID: -1842238054426046974, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - GrassTiles_18
+  - GrassTiles_19
+  - GrassTiles_16
+  - GrassTiles_17
+  - GrassTiles_14
+  - GrassTiles_15
+  - GrassTiles_12
+  - GrassTiles_13
+  - GrassTiles_10
+  - GrassTiles_11
+  - GrassTiles_9
+  - GrassTiles_8
+  - GrassTiles_3
+  - GrassTiles_2
+  - GrassTiles_1
+  - GrassTiles_0
+  - GrassTiles_7
+  - GrassTiles_6
+  - GrassTiles_5
+  - GrassTiles_4
+  - GrassTiles_22
+  - GrassTiles_21
+  - GrassTiles_20
+  m_RenderDataMap: {}
+  m_Tag: TilesSpriteAtlas
+  m_IsVariant: 0

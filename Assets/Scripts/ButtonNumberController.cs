@@ -7,7 +7,6 @@ using UniRx;
 
 public class ButtonNumberController : IDisposable
 {
-    
     ButtonNumberView _buttonNumberView;
 
     private int number = 0;

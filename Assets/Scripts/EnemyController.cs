@@ -4,23 +4,19 @@ using UnityEngine;
 using DG.Tweening;
 using Zenject;
 
-public class Enemy : MonoBehaviour, IPooledObject
+public class EnemyController : MonoBehaviour, IPooledObject
 {
-    [SerializeField] private float averageSpeed = 30f;
-    [SerializeField] int maxHealth = 100;
+    [SerializeField] private float averageSpeed;
+    [SerializeField] int maxHealth;
     private int currentHealth;
-    EnemyMoveController _enemyMoveController;
+    EnemyPath _enemyMoveController;
     HealthBar _playerHealth;
     private List<Vector3> waypointsPositions = new List<Vector3>();
     private Tweener path;
 
 
     [Inject]
-    public void Construct (HealthBar playerHealth, EnemyMoveController enemyMoveController) {
-        Debug.Log("playerHealth, enemyMoveController");
-        Debug.Log(playerHealth);
-        Debug.Log(enemyMoveController);
-
+    public void Construct (HealthBar playerHealth, EnemyPath enemyMoveController) {
         _playerHealth = playerHealth;
         _enemyMoveController = enemyMoveController;
     }
@@ -31,7 +27,7 @@ public class Enemy : MonoBehaviour, IPooledObject
         currentHealth = maxHealth;
 
         waypointsPositions = _enemyMoveController.getWaypoints();
-        averageSpeed = Random.Range(averageSpeed-5,averageSpeed+5);
+        float speed = Random.Range(averageSpeed-2,averageSpeed+2);
         path = this.transform.DOPath(waypointsPositions.ToArray(), averageSpeed, PathType.Linear, PathMode.Full3D)
             .SetEase(Ease.Linear)
             .OnStepComplete( () => EndReached());
@@ -41,7 +37,6 @@ public class Enemy : MonoBehaviour, IPooledObject
     public void EndReached(){
         _playerHealth.DamagePlayer();
         this.gameObject.SetActive(false);
-        
     }
 
 
@@ -58,7 +53,7 @@ public class Enemy : MonoBehaviour, IPooledObject
         }
     }
 
-    public class Factory : PlaceholderFactory<Enemy>
+    public class Factory : PlaceholderFactory<HealthBar, EnemyPath, EnemyController>
     {
     }
 }

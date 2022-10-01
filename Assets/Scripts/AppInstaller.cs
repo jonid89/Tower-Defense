@@ -11,6 +11,7 @@ public class AppInstaller : MonoInstaller
 
     public override void InstallBindings()
     {        
+
         //Container.Bind<ButtonGrid>().AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<ObjectSpawner>().AsSingle().NonLazy();
         ButtonInstaller.Install(Container);

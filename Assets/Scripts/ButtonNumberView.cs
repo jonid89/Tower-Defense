@@ -33,7 +33,7 @@ public class ButtonNumberView : MonoBehaviour, IDisposable
 
     }
     
-    public class Factory : PlaceholderFactory<ButtonNumberView>
+    public class Pool : MemoryPool<ButtonNumberView>
     {
         
     }

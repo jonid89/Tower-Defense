@@ -8,7 +8,8 @@ public class TowerSlot : MonoBehaviour
 {
     ObjectPooler _objectPooler;
     private bool hasTower = false;
-
+    
+    private GameObject tower;
 
     [Inject]
     public void Construct (ObjectPooler objectPooler) {
@@ -21,9 +22,15 @@ public class TowerSlot : MonoBehaviour
         if(hasTower != true){
             GameObject tower = _objectPooler.SpawnFromPool(ObjectPooler.PoolType.Tower,transform.position,Quaternion.identity, this.transform.parent);
             hasTower = true;
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        }else{
+            UpgradeTower();
         }
     }
 
+    void UpgradeTower(){
+        
+    }
     
 
 }

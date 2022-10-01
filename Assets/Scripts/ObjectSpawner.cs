@@ -33,7 +33,6 @@ public class ObjectSpawner : IDisposable
         for(int i=0; i < listSize; i++){
             buttonNumberViewList[i].gameObject.GetComponent<RectTransform>().localPosition = new Vector2;
         }
-
     }*/
 
 }

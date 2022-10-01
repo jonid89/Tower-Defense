@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using DG.Tweening;
 
-public class EnemyMoveController : MonoBehaviour
+public class EnemyPath : MonoBehaviour
 {
     [SerializeField] private GameObject enemyWaypoints;
 

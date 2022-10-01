@@ -15,7 +15,7 @@ public class AppInstaller : MonoInstaller
         //Container.Bind<ButtonGrid>().AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<ObjectSpawner>().AsSingle().NonLazy();
         ButtonInstaller.Install(Container);
-        Container.BindFactory<ButtonNumberView, ButtonNumberView.Factory>().FromComponentInNewPrefab(_buttonNumberView).UnderTransformGroup("Canvas").NonLazy();
+        Container.BindMemoryPool<ButtonNumberView, ButtonNumberView.Pool>().FromComponentInNewPrefab(_buttonNumberView).UnderTransformGroup("Canvas").NonLazy();
         
     }
 

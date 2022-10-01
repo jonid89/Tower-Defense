@@ -11,9 +11,9 @@ public class ObjectSpawner : IDisposable
 
     private List<ButtonNumberView> buttonNumberViewList = new List<ButtonNumberView>();
 
-    public ObjectSpawner(ButtonNumberView.Factory buttonNumberViewFactory, ButtonNumberController.Factory buttonNumberControllerFactory/*, ButtonGrid buttonGrid*/){
+    public ObjectSpawner(ButtonNumberView.Pool buttonNumberViewPool, ButtonNumberController.Factory buttonNumberControllerFactory/*, ButtonGrid buttonGrid*/){
         for(int i=0; i < listSize; i++){
-            var buttonNumberView = buttonNumberViewFactory.Create();
+            var buttonNumberView = buttonNumberViewPool.Spawn();
             Vector2 position = new Vector2(-250+250*(i%3),-50+50*(i/3));
             buttonNumberView.SetPosition(position);
             buttonNumberControllerFactory.Create(buttonNumberView);

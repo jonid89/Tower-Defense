@@ -17,10 +17,6 @@ public class Enemy : MonoBehaviour, IPooledObject
 
     [Inject]
     public void Construct (HealthBar playerHealth, EnemyMoveController enemyMoveController) {
-        Debug.Log("playerHealth, enemyMoveController");
-        Debug.Log(playerHealth);
-        Debug.Log(enemyMoveController);
-
         _playerHealth = playerHealth;
         _enemyMoveController = enemyMoveController;
     }
@@ -41,7 +37,6 @@ public class Enemy : MonoBehaviour, IPooledObject
     public void EndReached(){
         _playerHealth.DamagePlayer();
         this.gameObject.SetActive(false);
-        
     }
 
 
@@ -58,7 +53,7 @@ public class Enemy : MonoBehaviour, IPooledObject
         }
     }
 
-    public class Factory : PlaceholderFactory<Enemy>
+    public class Factory : PlaceholderFactory<HealthBar, EnemyMoveController, Enemy>
     {
     }
 }

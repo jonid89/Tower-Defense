@@ -9,6 +9,10 @@ public class ObjectPooler : MonoBehaviour, IInitializable
     private Tower.Factory _towerFactory;
     private Projectile.Factory _projectileFactory;
 
+    private HealthBar _healthBar;
+
+    private EnemyMoveController _enemyMoveController;
+
     [System.Serializable]
     public class Pool{
         public PoolType type;
@@ -33,14 +37,13 @@ public class ObjectPooler : MonoBehaviour, IInitializable
     #endregion*/
     
     [Inject]
-    public void Construct (Enemy.Factory enemyFactory, Tower.Factory towerFactory, Projectile.Factory projectileFactory) 
+    public void Construct (HealthBar healthBar, EnemyMoveController enemyMoveController, Enemy.Factory enemyFactory, Tower.Factory towerFactory, Projectile.Factory projectileFactory) 
     {
-        Debug.Log("enemyFactory");
-        Debug.Log(enemyFactory);
-
         _enemyFactory = enemyFactory;
         _towerFactory = towerFactory;
         _projectileFactory =  projectileFactory;
+        _healthBar = healthBar;
+        _enemyMoveController = enemyMoveController;
     }
 
     public List<Pool> pools;
@@ -61,7 +64,7 @@ public class ObjectPooler : MonoBehaviour, IInitializable
                 switch (pool.type)
                 {
                     case PoolType.Enemy:
-                        obj = _enemyFactory.Create().gameObject;
+                        obj = _enemyFactory.Create(_healthBar, _enemyMoveController).gameObject;
                         break;
                     case PoolType.Tower:
                         obj = _towerFactory.Create().gameObject;

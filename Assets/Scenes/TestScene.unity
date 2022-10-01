@@ -1384,13 +1384,13 @@ MonoBehaviour:
   pools:
   - type: 0
     prefab: {fileID: 1120865586340843186, guid: 808516f66d0f3df469cedf2438d8c9a5, type: 3}
-    size: 10
+    size: 5
   - type: 20
     prefab: {fileID: 5674469527028032749, guid: 296f484a686c8e3489bce99e6c4d75cc, type: 3}
     size: 50
   - type: 10
     prefab: {fileID: 765566474949297385, guid: de8cf4e3ed4ebe34c9b2c87fcf55ec06, type: 3}
-    size: 10
+    size: 4
 --- !u!1 &1388998619 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6442531497168068037, guid: e82142b0adea4d54d811e0528174f8dd, type: 3}
@@ -1794,6 +1794,9 @@ MonoBehaviour:
   _enemyMoveController: {fileID: 772216357}
   _healthBar: {fileID: 1764373679}
   _objectPooler: {fileID: 1333275945}
+  EnemyPrefab: {fileID: 765566474949297385, guid: de8cf4e3ed4ebe34c9b2c87fcf55ec06, type: 3}
+  TowerPrefab: {fileID: 1120865586340843186, guid: 808516f66d0f3df469cedf2438d8c9a5, type: 3}
+  ProjectilePrefab: {fileID: 5674469527028032749, guid: 296f484a686c8e3489bce99e6c4d75cc, type: 3}
 --- !u!114 &1751188765
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DungeonTilesSpriteAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -181844415429442499, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 8167742340338099686, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 2842908515785971199, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: -3265930118070084959, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 8126453587975457229, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 4966251771811483203, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: -7828938355900540864, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: -145057554451017839, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: -4553087954214238460, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 1845899906368879107, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: -6157596096032997458, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 1995367559692154382, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 8848343481210857060, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: -4904177127877315167, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 7170000431217688418, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: -7507972096479043603, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: -6562316106959654556, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 7892765828215635136, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 2913983046736453097, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: -8725118570894000483, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 5360078708562817397, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 8324883512686724511, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 7910426297263419620, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 5716736339582247214, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: -1996535609541952174, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 7682167842407800367, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 5143275775879492913, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  - {fileID: 8183979256803693038, guid: 56ba90a8138cdac40b9dae4643b61911, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - DungeonTiles_9
+  - DungeonTiles_8
+  - DungeonTiles_3
+  - DungeonTiles_2
+  - DungeonTiles_1
+  - DungeonTiles_0
+  - DungeonTiles_7
+  - DungeonTiles_6
+  - DungeonTiles_5
+  - DungeonTiles_4
+  - DungeonTiles_23
+  - DungeonTiles_22
+  - DungeonTiles_18
+  - DungeonTiles_21
+  - DungeonTiles_19
+  - DungeonTiles_20
+  - DungeonTiles_16
+  - DungeonTiles_27
+  - DungeonTiles_17
+  - DungeonTiles_26
+  - DungeonTiles_14
+  - DungeonTiles_25
+  - DungeonTiles_15
+  - DungeonTiles_24
+  - DungeonTiles_12
+  - DungeonTiles_13
+  - DungeonTiles_10
+  - DungeonTiles_11
+  m_RenderDataMap: {}
+  m_Tag: DungeonTilesSpriteAtlas
+  m_IsVariant: 0

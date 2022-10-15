@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TilesSpriteAtlas
+  m_Name: GrassTilesSpriteAtlas
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -85,5 +85,5 @@ SpriteAtlas:
   - GrassTiles_21
   - GrassTiles_20
   m_RenderDataMap: {}
-  m_Tag: TilesSpriteAtlas
+  m_Tag: GrassTilesSpriteAtlas
   m_IsVariant: 0

@@ -73,7 +73,6 @@ public class ObjectPooler : MonoBehaviour, IInitializable
                         obj = _projectileFactory.Create().gameObject;
                         break;
                 }
-                Debug.Log(obj);
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
             }

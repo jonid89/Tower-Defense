@@ -1,7 +1,16 @@
 fileFormatVersion: 2
 guid: 5d99496c70febb648ab4b1196bd855c4
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 1302561492164483178
+    second: SpiderGreyDown_0
+  - first:
+      213: 1019796732892642081
+    second: SpiderGreyDown_1
+  - first:
+      213: -7453050973596694624
+    second: SpiderGreyDown_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -113,7 +122,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SpiderGreyDown_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 88
+        width: 33
+        height: 18
+      alignment: 9
+      pivot: {x: 0.49999982, y: 0.5265185}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a68119e96c0a31210800000000000000
+      internalID: 1302561492164483178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpiderGreyDown_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 49
+        width: 33
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b7b27b9bb072e00800000000000000
+      internalID: 1019796732892642081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpiderGreyDown_2
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 9
+        width: 33
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a7c3e1a0a1719890800000000000000
+      internalID: -7453050973596694624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -1,7 +1,16 @@
 fileFormatVersion: 2
 guid: 6e3916a2fc5538147b4392b237ab7f50
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1780683883704770436
+    second: SpiderGreyUp_0
+  - first:
+      213: 2323011503884427340
+    second: SpiderGreyUp_1
+  - first:
+      213: -2526918658219892332
+    second: SpiderGreyUp_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -113,7 +122,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SpiderGreyUp_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 89
+        width: 33
+        height: 20
+      alignment: 9
+      pivot: {x: 0.49517846, y: 0.5238674}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c70a386317db947e0800000000000000
+      internalID: -1780683883704770436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpiderGreyUp_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 49
+        width: 33
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c406d2aa7aefc3020800000000000000
+      internalID: 2323011503884427340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpiderGreyUp_2
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 12
+        width: 33
+        height: 17
+      alignment: 9
+      pivot: {x: 0.49999982, y: 0.43448448}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4912f785ed49eecd0800000000000000
+      internalID: -2526918658219892332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

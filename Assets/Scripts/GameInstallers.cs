@@ -7,13 +7,11 @@ using Zenject;
 public class GameInstallers : MonoInstaller
 {
     [SerializeField]
-    private EnemyPath _enemyMoveController;
+    private EnemyPath _enemyPath;
     
     [SerializeField]
     private HealthBar _healthBar;
-    
-    [SerializeField]
-    private ObjectPooler _objectPooler;
+
     
     [SerializeField]
     private GameObject EnemyPrefab;
@@ -26,13 +24,15 @@ public class GameInstallers : MonoInstaller
     
     public override void InstallBindings()
     {
-        /*Container.Bind<GameOverPanel>().FromInstance(_gameOverPanel).AsSingle().NonLazy();
-        Container.Bind<LevelWonPanel>().FromInstance(_levelWonPanel).AsSingle().NonLazy();*/
-        //Container.BindInterfacesAndSelfTo<ObjectPooler>().AsSingle();
-        Container.Bind<EnemyPath>().FromInstance(_enemyMoveController).AsSingle().NonLazy();
+        
+        Container.Bind<EnemyPath>().FromInstance(_enemyPath).AsSingle().NonLazy();
         Container.Bind<HealthBar>().FromInstance(_healthBar).AsSingle().NonLazy();
-        Container.BindInterfacesAndSelfTo<ObjectPooler>().FromInstance(_objectPooler).AsSingle().NonLazy();
-        Container.BindFactory<HealthBar, EnemyPath, EnemyController, EnemyController.Factory>().FromComponentInNewPrefab(EnemyPrefab);
+        
+        Container.BindInterfacesAndSelfTo<ObjectPooler>().AsSingle().NonLazy();
+        
+        Container.BindFactory<EnemyView, HealthBar, EnemyPath, EnemyController, EnemyController.Factory>();
+        Container.BindMemoryPool<EnemyView, EnemyView.Pool>().FromComponentInNewPrefab(EnemyPrefab).NonLazy();
+
         Container.BindFactory<Tower, Tower.Factory>().FromComponentInNewPrefab(TowerPrefab);
         Container.BindFactory<Projectile, Projectile.Factory>().FromComponentInNewPrefab(ProjectilePrefab);
         

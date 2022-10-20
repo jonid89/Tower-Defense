@@ -1,24 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
-public class ObjectPooler : MonoBehaviour, IInitializable
+public class ObjectPooler
 {
-    private EnemyController.Factory _enemyFactory;
+
+    private EnemyView.Pool _enemyViewPool;
     private Tower.Factory _towerFactory;
     private Projectile.Factory _projectileFactory;
+    private EnemyController.Factory _enemyControllerFactory;
 
     private HealthBar _healthBar;
 
-    private EnemyPath _enemyMoveController;
+    private EnemyPath _enemyPath;
 
-    [System.Serializable]
-    public class Pool{
-        public PoolType type;
-        public GameObject prefab;
-        public int size;
-    }
 
     public enum PoolType
     {
@@ -27,98 +22,50 @@ public class ObjectPooler : MonoBehaviour, IInitializable
         Projectile=20
     }
 
-    /*#region Singleton
-    public static ObjectPooler Instance { get; private set; }
-    private void Awake()
-    {
-        Instance = this;
-    }
 
-    #endregion*/
-    
-    [Inject]
-    public void Construct (HealthBar healthBar, EnemyPath enemyMoveController, EnemyController.Factory enemyFactory, Tower.Factory towerFactory, Projectile.Factory projectileFactory) 
+    public ObjectPooler(EnemyView.Pool enemyViewPool, EnemyController.Factory enemyControllerFactory, HealthBar healthBar, EnemyPath enemyPath, Tower.Factory towerFactory, Projectile.Factory projectileFactory) 
     {
-        _enemyFactory = enemyFactory;
+        _enemyViewPool = enemyViewPool;
+        _enemyControllerFactory = enemyControllerFactory;
+        _healthBar = healthBar;
+        _enemyPath = enemyPath;
         _towerFactory = towerFactory;
         _projectileFactory =  projectileFactory;
-        _healthBar = healthBar;
-        _enemyMoveController = enemyMoveController;
     }
 
-    public List<Pool> pools;
-    public Dictionary<PoolType, Queue<GameObject>> poolDictionary;
 
-    public void Initialize()
-    {
-        poolDictionary = new Dictionary<PoolType, Queue<GameObject>>();    
 
-        foreach (Pool pool in pools)
-        {
-            Queue<GameObject> objectPool = new Queue<GameObject>();
-
-            for (int i = 0; i < pool.size; i++)
-            {
-                GameObject obj = new GameObject(); 
-                
-                switch (pool.type)
-                {
-                    case PoolType.Enemy:
-                        obj = _enemyFactory.Create(_healthBar, _enemyMoveController).gameObject;
-                        break;
-                    case PoolType.Tower:
-                        obj = _towerFactory.Create().gameObject;
-                        break;
-                    case PoolType.Projectile:
-                        obj = _projectileFactory.Create().gameObject;
-                        break;
-                }
-                obj.SetActive(false);
-                objectPool.Enqueue(obj);
-            }
-
-            poolDictionary.Add(pool.type, objectPool);
-        }
-    }
-
-    public GameObject SpawnFromPool(PoolType type, Vector3 position, Quaternion rotation, Transform parent)
-    {
-        if (!poolDictionary.ContainsKey(type))
-        {
-            Debug.LogWarning("Pool with tag " + type + " doesn't exist.");
-            return null;
-        }
-        if (poolDictionary[type].Count == 0) {
-            Debug.LogWarning("Pool with tag " + type + " is empty");
-        }
-        GameObject objectToSpawn = poolDictionary[type].Dequeue();
-
-        objectToSpawn.SetActive(true);
-        objectToSpawn.transform.position = position;
-        objectToSpawn.transform.rotation = rotation;
-        objectToSpawn.transform.SetParent(parent);
-        IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
-            
+    public void SpawnObject(PoolType type, Vector3 position, Quaternion rotation, Transform parent){
+        
+        GameObject obj = new GameObject();
         
         switch (type)
         {
-        case PoolType.Projectile:     
+        case PoolType.Projectile: 
+            Projectile _projectile = _projectileFactory.Create();
+            obj = _projectile.gameObject;
+            break;
         case PoolType.Enemy:
-            if (pooledObj != null)
-            {
-                pooledObj.OnObjectSpawn();
-            }
+            var _enemyView = _enemyViewPool.Spawn();
+            _enemyControllerFactory.Create(_enemyView, _healthBar, _enemyPath);
+            //_enemyController.OnObjectSpawn();
+            obj = _enemyView.gameObject;
             break;
         case PoolType.Tower:
-            
+            Tower _tower = _towerFactory.Create();
+            obj = _tower.gameObject;
             break;
         }
+        
+        obj.SetActive(true);
+        obj.transform.position = position;
+        obj.transform.rotation = rotation;
+        obj.transform.SetParent(parent);
 
-        poolDictionary[type].Enqueue(objectToSpawn);
-
-        return objectToSpawn;
     }
 
 
-}
 
+
+
+}

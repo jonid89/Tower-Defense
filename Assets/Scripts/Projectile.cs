@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour, IPooledObject
 
     private void fireAtEnemy(){
         enemy = this.transform.parent.GetComponent<Tower>().getTarget();
-        enemyPosition = enemy.transform.position;
+        enemyPosition = enemy.GetTransform().position;
         
         this.transform.DOMove(enemyPosition,speed)
             .SetEase(Ease.Linear)

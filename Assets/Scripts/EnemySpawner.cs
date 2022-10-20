@@ -37,9 +37,12 @@ public class EnemySpawner : MonoBehaviour
 
     
     void spawnEnemy(){
-        GameObject enemy = _objectPooler.SpawnFromPool(ObjectPooler.PoolType.Enemy,transform.position,Quaternion.identity, this.transform.parent);
-        enemies.Add(enemy);
+        _objectPooler.SpawnObject(ObjectPooler.PoolType.Enemy,transform.position,Quaternion.identity, this.transform.parent);
     }
+
+    /*public void AddEnemyToList(EnemyView enemy){
+        enemies.Add(enemy);
+    }*/
 
     private IEnumerator LastEnemySent(){
         yield return new WaitForSeconds( 10.0f );

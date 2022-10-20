@@ -8,15 +8,6 @@ public class EnemyPath : MonoBehaviour
 {
     [SerializeField] private GameObject enemyWaypoints;
 
-    /*#region Singleton
-    public static EnemyMoveController Instance;
-    private void Awake()
-    {
-        Instance = this;
-    }
-
-    #endregion*/
-
     private List<Transform> waypoints;
     private List<Vector3> waypointsPositions = new List<Vector3>();
     
@@ -38,7 +29,6 @@ public class EnemyPath : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     public List<Vector3> getWaypoints()
     {
         return waypointsPositions;

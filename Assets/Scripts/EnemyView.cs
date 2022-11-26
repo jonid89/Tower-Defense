@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using UniRx;
 using UniRx.Triggers;
 using Zenject;
+using System.Threading.Tasks;
 using DG.Tweening;
 
 public class EnemyView : MonoBehaviour, IPooledObject
@@ -19,37 +20,59 @@ public class EnemyView : MonoBehaviour, IPooledObject
     private Vector2 _startPoint = new Vector2();
     private Vector2 _finalPoint = new Vector2();
     private Vector2 _direction = new Vector2();
+    [SerializeField] private List<Sprite> _spritesWalkLeft;
+    [SerializeField] private List<Sprite> _spritesWalkRight;
+    [SerializeField] private List<Sprite> _spritesWalkUp;
+    [SerializeField] private List<Sprite> _spritesWalkDown;
+    private List<Sprite> _currentSprites;
+    private int _spriteNumber = 0;
+    [SerializeField] private float _animationSpeed = 0.3f;
+    private float _counter;
 
     public void OnObjectSpawn()
     {   
-        _animator = this.GetComponent<Animator>();
+        //_animator = this.GetComponent<Animator>();
         _startPoint = this.gameObject.transform.position;
+        _currentSprites = _spritesWalkLeft;
+        _counter = _animationSpeed;
 
         _waypointsPositions = _enemyPath.getWaypoints();
         float speed = Random.Range(_timeToFinishPath-2,_timeToFinishPath+2);
-        _path = this.gameObject.transform.DOPath(_waypointsPositions.ToArray(), _timeToFinishPath, PathType.Linear, PathMode.Full3D)
+        _path = this.gameObject.transform.DOPath(_waypointsPositions.ToArray(), speed, PathType.Linear, PathMode.Full3D)
             .SetEase(Ease.Linear)
-            .OnWaypointChange(WalkAnimation)
+            .OnWaypointChange(SetSprites)
             .OnStepComplete( () => _enemyController.EndReached());
+        
     }
 
-    public void WalkAnimation(int waypointIndex){
+    private void Update(){
+        
+       _counter -= Time.deltaTime;
+        if(_counter <= 0){
+            _spriteNumber++ ;
+            if(_spriteNumber >= _currentSprites.Count ) _spriteNumber = 0;
+            this.GetComponent<SpriteRenderer>().sprite = _currentSprites[_spriteNumber];
+            Debug.Log(_spriteNumber);
+            _counter = _animationSpeed;
+        } 
+    }
+
+    public void SetSprites(int waypointIndex){
         _finalPoint = _waypointsPositions[waypointIndex];
         _direction = (_finalPoint - _startPoint);
         _direction.Normalize();
-        
 
         if(_direction == Vector2.up){
-            _animator.Play("GreySpiderWalkUp");
+            _currentSprites = _spritesWalkUp;
         }
         if(_direction == Vector2.down){
-            _animator.Play("GreySpiderWalkDown");
+            _currentSprites = _spritesWalkDown;
         }
         if(_direction == Vector2.left){
-            _animator.Play("GreySpiderWalkLeft");
+            _currentSprites = _spritesWalkLeft;
         }
         if(_direction == Vector2.right){
-            _animator.Play("GreySpiderWalkRight");
+            _currentSprites = _spritesWalkRight;
         }
 
         _startPoint = _finalPoint;

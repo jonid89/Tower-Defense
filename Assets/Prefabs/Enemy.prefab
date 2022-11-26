@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 765566474949297387}
   - component: {fileID: 7085285262509057199}
   - component: {fileID: 6473035345367894110}
-  - component: {fileID: 3034196677603105485}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Enemy
@@ -49,6 +48,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeToFinishPath: 10
   _enemyPath: {fileID: 0}
+  _spritesWalkLeft:
+  - {fileID: 5300728379622324695, guid: 8a917a850a8bff3438933ee4d1456b04, type: 3}
+  - {fileID: -1048528022144764831, guid: 8a917a850a8bff3438933ee4d1456b04, type: 3}
+  - {fileID: -9129076320052947006, guid: 8a917a850a8bff3438933ee4d1456b04, type: 3}
+  - {fileID: -1048528022144764831, guid: 8a917a850a8bff3438933ee4d1456b04, type: 3}
+  _spritesWalkRight:
+  - {fileID: 543259596225419987, guid: 529a06f5425c43749bb2a7fb36c9792d, type: 3}
+  - {fileID: -417592573461071324, guid: 529a06f5425c43749bb2a7fb36c9792d, type: 3}
+  - {fileID: 4739732318241501151, guid: 529a06f5425c43749bb2a7fb36c9792d, type: 3}
+  - {fileID: -417592573461071324, guid: 529a06f5425c43749bb2a7fb36c9792d, type: 3}
+  _spritesWalkUp:
+  - {fileID: -1780683883704770436, guid: 6e3916a2fc5538147b4392b237ab7f50, type: 3}
+  - {fileID: 2323011503884427340, guid: 6e3916a2fc5538147b4392b237ab7f50, type: 3}
+  - {fileID: -2526918658219892332, guid: 6e3916a2fc5538147b4392b237ab7f50, type: 3}
+  - {fileID: 2323011503884427340, guid: 6e3916a2fc5538147b4392b237ab7f50, type: 3}
+  _spritesWalkDown:
+  - {fileID: 1302561492164483178, guid: 5d99496c70febb648ab4b1196bd855c4, type: 3}
+  - {fileID: 1019796732892642081, guid: 5d99496c70febb648ab4b1196bd855c4, type: 3}
+  - {fileID: -7453050973596694624, guid: 5d99496c70febb648ab4b1196bd855c4, type: 3}
+  - {fileID: 1019796732892642081, guid: 5d99496c70febb648ab4b1196bd855c4, type: 3}
+  _animationSpeed: 0.1
 --- !u!212 &765566474949297387
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -147,22 +167,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &3034196677603105485
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765566474949297385}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ca60f0608a05f034a9b00c520495d1f0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

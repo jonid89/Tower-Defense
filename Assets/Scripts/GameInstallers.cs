@@ -34,8 +34,11 @@ public class GameInstallers : MonoInstaller
         Container.BindMemoryPool<EnemyView, EnemyView.Pool>().FromComponentInNewPrefab(EnemyPrefab).NonLazy();
 
         Container.BindFactory<Tower, Tower.Factory>().FromComponentInNewPrefab(TowerPrefab);
-        Container.BindFactory<Projectile, Projectile.Factory>().FromComponentInNewPrefab(ProjectilePrefab);
         
+        Container.BindFactory<ProjectileView, ProjectileController, ProjectileController.Factory>();
+        Container.BindMemoryPool<ProjectileView, ProjectileView.Pool>().FromComponentInNewPrefab(ProjectilePrefab).NonLazy();
+
+
     }
 
 

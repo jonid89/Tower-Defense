@@ -6,8 +6,9 @@ public class ObjectPooler
 {
 
     private EnemyView.Pool _enemyViewPool;
+    private ProjectileView.Pool _projectileViewPool;
     private Tower.Factory _towerFactory;
-    private Projectile.Factory _projectileFactory;
+    private ProjectileController.Factory _projectileControllerFactory;
     private EnemyController.Factory _enemyControllerFactory;
 
     private HealthBar _healthBar;
@@ -23,14 +24,16 @@ public class ObjectPooler
     }
 
 
-    public ObjectPooler(EnemyView.Pool enemyViewPool, EnemyController.Factory enemyControllerFactory, HealthBar healthBar, EnemyPath enemyPath, Tower.Factory towerFactory, Projectile.Factory projectileFactory) 
+    public ObjectPooler(EnemyView.Pool enemyViewPool, EnemyController.Factory enemyControllerFactory, HealthBar healthBar,
+     EnemyPath enemyPath, Tower.Factory towerFactory, ProjectileController.Factory projectileControllerFactory, ProjectileView.Pool projectileViewPool) 
     {
         _enemyViewPool = enemyViewPool;
         _enemyControllerFactory = enemyControllerFactory;
         _healthBar = healthBar;
         _enemyPath = enemyPath;
         _towerFactory = towerFactory;
-        _projectileFactory =  projectileFactory;
+        _projectileControllerFactory =  projectileControllerFactory;
+        _projectileViewPool = projectileViewPool;
     }
 
 
@@ -42,13 +45,13 @@ public class ObjectPooler
         switch (type)
         {
         case PoolType.Projectile: 
-            Projectile _projectile = _projectileFactory.Create();
-            obj = _projectile.gameObject;
+            var _projectileView = _projectileViewPool.Spawn();
+            _projectileControllerFactory.Create(_projectileView);
+            obj = _projectileView.gameObject;
             break;
         case PoolType.Enemy:
             var _enemyView = _enemyViewPool.Spawn();
             _enemyControllerFactory.Create(_enemyView, _healthBar, _enemyPath);
-            //_enemyController.OnObjectSpawn();
             obj = _enemyView.gameObject;
             break;
         case PoolType.Tower:

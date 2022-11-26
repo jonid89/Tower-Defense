@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class ObjectPoolerOLD : MonoBehaviour, IInitializable
-{
+public class ObjectPoolerOLD : MonoBehaviour //, IInitializable
+{/*
     private EnemyView.Pool _enemyViewPool;
     private Tower.Factory _towerFactory;
     private Projectile.Factory _projectileFactory;
@@ -57,8 +57,6 @@ public class ObjectPoolerOLD : MonoBehaviour, IInitializable
                 switch (pool.type)
                 {
                     case PoolType.Enemy:
-                        /*obj = _enemyViewPool.Spawn();
-                        _enemyControllerFactory.Create(obj, _healthBar, _enemyPath);*/
                         
                         //obj = _enemyFactory.Create(_healthBar, _enemyMoveController).gameObject;
                         break;
@@ -114,7 +112,7 @@ public class ObjectPoolerOLD : MonoBehaviour, IInitializable
 
         return objectToSpawn;
     }
-
+*/
 
 }
 

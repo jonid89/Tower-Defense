@@ -56,10 +56,6 @@ public class EnemyController : IPooledObject
         }
     }
 
-    public Transform GetTransform(){
-        return _enemyView.GetComponent<Transform>();
-    }
-
     public class Factory : PlaceholderFactory<EnemyView, HealthBar, EnemyPath, EnemyController>
     {
     }

@@ -31,7 +31,6 @@ public class EnemyView : MonoBehaviour, IPooledObject
 
     public void OnObjectSpawn()
     {   
-        //_animator = this.GetComponent<Animator>();
         _startPoint = this.gameObject.transform.position;
         _currentSprites = _spritesWalkLeft;
         _counter = _animationSpeed;
@@ -52,7 +51,6 @@ public class EnemyView : MonoBehaviour, IPooledObject
             _spriteNumber++ ;
             if(_spriteNumber >= _currentSprites.Count ) _spriteNumber = 0;
             this.GetComponent<SpriteRenderer>().sprite = _currentSprites[_spriteNumber];
-            Debug.Log(_spriteNumber);
             _counter = _animationSpeed;
         } 
     }

@@ -1341,7 +1341,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933270032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: -0.5, z: 0}
+  m_LocalPosition: {x: -4.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 922098051}
@@ -1814,7 +1814,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPath: {fileID: 772216357}
-  _healthBar: {fileID: 1764373679}
+  _levelManager: {fileID: 496950065}
+  _healthbar: {fileID: 1764373679}
   EnemyPrefab: {fileID: 765566474949297385, guid: de8cf4e3ed4ebe34c9b2c87fcf55ec06, type: 3}
   TowerPrefab: {fileID: 1120865586340843186, guid: 808516f66d0f3df469cedf2438d8c9a5, type: 3}
   ProjectilePrefab: {fileID: 5674469527028032749, guid: 296f484a686c8e3489bce99e6c4d75cc, type: 3}

@@ -11,7 +11,7 @@ public class ObjectPooler
     private ProjectileController.Factory _projectileControllerFactory;
     private EnemyController.Factory _enemyControllerFactory;
 
-    private HealthBar _healthBar;
+    private LevelManager _levelManager;
 
     private EnemyPath _enemyPath;
 
@@ -24,12 +24,12 @@ public class ObjectPooler
     }
 
 
-    public ObjectPooler(EnemyView.Pool enemyViewPool, EnemyController.Factory enemyControllerFactory, HealthBar healthBar,
+    public ObjectPooler(EnemyView.Pool enemyViewPool, EnemyController.Factory enemyControllerFactory, LevelManager levelManager,
      EnemyPath enemyPath, Tower.Factory towerFactory, ProjectileController.Factory projectileControllerFactory, ProjectileView.Pool projectileViewPool) 
     {
         _enemyViewPool = enemyViewPool;
         _enemyControllerFactory = enemyControllerFactory;
-        _healthBar = healthBar;
+        _levelManager = levelManager;
         _enemyPath = enemyPath;
         _towerFactory = towerFactory;
         _projectileControllerFactory =  projectileControllerFactory;
@@ -54,7 +54,7 @@ public class ObjectPooler
             var _enemyView = _enemyViewPool.Spawn();
             obj = _enemyView.gameObject;
             SetObjTransformValues();
-            _enemyControllerFactory.Create(_enemyView, _healthBar, _enemyPath);
+            _enemyControllerFactory.Create(_enemyView, _levelManager, _enemyPath);
             break;
         case PoolType.Tower:
             Tower _tower = _towerFactory.Create();

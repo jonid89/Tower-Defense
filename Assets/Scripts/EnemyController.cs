@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Zenject;
+using UniRx;
 
 
 public class EnemyController : IPooledObject
@@ -11,7 +12,7 @@ public class EnemyController : IPooledObject
     private int currentHealth;
     EnemyView _enemyView;
     EnemyPath _enemyPath;
-    HealthBar _playerHealth;
+    LevelManager _levelManager;
     private List<Vector3> waypointsPositions = new List<Vector3>();
     private Tweener path;
     private Animator animator;
@@ -20,14 +21,15 @@ public class EnemyController : IPooledObject
     private Vector2 direction = new Vector2();
 
 
-    public EnemyController(EnemyView enemyView, HealthBar playerHealth, EnemyPath enemyPath) {
+    public EnemyController(EnemyView enemyView, LevelManager levelManager, EnemyPath enemyPath) {
         _enemyView = enemyView;
-        _playerHealth = playerHealth;
+        _levelManager = levelManager;
         _enemyPath = enemyPath;
         _enemyView._enemyController = this;
         currentHealth = _enemyView.maxHealth;
         _enemyView._enemyPath = _enemyPath;
         _enemyView.OnObjectSpawn();
+        path = _enemyView._path;
     }
 
 
@@ -38,8 +40,11 @@ public class EnemyController : IPooledObject
 
 
     public void EndReached(){
-        _playerHealth.DamagePlayer();
-        _enemyView.gameObject.SetActive(false);
+        _levelManager.DamagePlayer();
+        _enemyView.EndEnemy();
+        /*gameObject.SetActive(false);
+        path.Restart();
+        path.Kill();*/
     }
 
 
@@ -48,13 +53,14 @@ public class EnemyController : IPooledObject
         currentHealth -= damage;
         if (currentHealth <= 0 )
         {
-            _enemyView.gameObject.SetActive(false);
-            path.Restart();
+            _enemyView.EndEnemy();
+            /*path.Restart();
             path.Kill();
+            _enemyView.gameObject.SetActive(false);*/
         }
     }
 
-    public class Factory : PlaceholderFactory<EnemyView, HealthBar, EnemyPath, EnemyController>
+    public class Factory : PlaceholderFactory<EnemyView, LevelManager, EnemyPath, EnemyController>
     {
     }
 }

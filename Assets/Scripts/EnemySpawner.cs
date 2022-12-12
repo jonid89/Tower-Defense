@@ -40,10 +40,6 @@ public class EnemySpawner : MonoBehaviour
         _objectPooler.SpawnObject(ObjectPooler.PoolType.Enemy,transform.position,Quaternion.identity, this.transform);
     }
 
-    /*public void AddEnemyToList(EnemyView enemy){
-        enemies.Add(enemy);
-    }*/
-
     private IEnumerator LastEnemySent(){
         yield return new WaitForSeconds( 10.0f );
         levelManager.LevelWon();

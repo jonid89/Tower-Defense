@@ -16,7 +16,7 @@ public class EnemyView : MonoBehaviour, IPooledObject
     public EnemyController _enemyController;
     public EnemyPath _enemyPath;
     private List<Vector3> _waypointsPositions = new List<Vector3>();
-    private Tweener _path;
+    public Tweener _path;
     private Animator _animator;
     private Vector2 _startPoint = new Vector2();
     private Vector2 _finalPoint = new Vector2();
@@ -38,6 +38,7 @@ public class EnemyView : MonoBehaviour, IPooledObject
 
         _waypointsPositions = _enemyPath.getWaypoints();
         float speed = Random.Range(_timeToFinishPath-2,_timeToFinishPath+2);
+        
         _path = this.gameObject.transform.DOPath(_waypointsPositions.ToArray(), speed, PathType.Linear, PathMode.Full3D)
             .SetEase(Ease.Linear)
             .OnWaypointChange(SetSprites)
@@ -76,6 +77,12 @@ public class EnemyView : MonoBehaviour, IPooledObject
 
         _startPoint = _finalPoint;
         
+    }
+
+    public void EndEnemy(){
+        gameObject.SetActive(false);
+        _path.Restart();
+        _path.Kill();
     }
 
 

@@ -9,17 +9,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] LevelManager levelManager;
 
 
-    /*#region Singleton
-    public static HealthBar Instance { get; private set; }
-    private void Awake()
-    {
-        Instance = this;
-    }
-
-    #endregion*/
-
-
-    public void DamagePlayer(){
+    public void DamageHealth(){
         lives[0].SetActive(false);
         lives.RemoveAt(0);
         if (lives.Count == 0 ){

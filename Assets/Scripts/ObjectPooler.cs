@@ -41,29 +41,34 @@ public class ObjectPooler
     public void SpawnObject(PoolType type, Vector3 position, Quaternion rotation, Transform parent){
         
         GameObject obj = new GameObject();
-        
+
         switch (type)
         {
         case PoolType.Projectile: 
             var _projectileView = _projectileViewPool.Spawn();
-            _projectileControllerFactory.Create(_projectileView);
             obj = _projectileView.gameObject;
+            SetObjTransformValues();
+            _projectileControllerFactory.Create(_projectileView);
             break;
         case PoolType.Enemy:
             var _enemyView = _enemyViewPool.Spawn();
-            _enemyControllerFactory.Create(_enemyView, _healthBar, _enemyPath);
             obj = _enemyView.gameObject;
+            SetObjTransformValues();
+            _enemyControllerFactory.Create(_enemyView, _healthBar, _enemyPath);
             break;
         case PoolType.Tower:
             Tower _tower = _towerFactory.Create();
             obj = _tower.gameObject;
+            SetObjTransformValues();
             break;
         }
-        
-        obj.SetActive(true);
-        obj.transform.position = position;
-        obj.transform.rotation = rotation;
-        obj.transform.SetParent(parent);
+
+        void SetObjTransformValues(){
+            obj.SetActive(true);
+            obj.transform.parent = parent;
+            obj.transform.position = position;
+            obj.transform.rotation = rotation;
+        }
 
     }
 

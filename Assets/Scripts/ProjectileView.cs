@@ -12,7 +12,8 @@ public class ProjectileView : MonoBehaviour, IPooledObject
 
     public void OnObjectSpawn()
     {
-        _projectileController.fireAtEnemy();
+        //Debug.Log("projectileSpawned");
+        //_projectileController.fireAtEnemy();
     }
 
 

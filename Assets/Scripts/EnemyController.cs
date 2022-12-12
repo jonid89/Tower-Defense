@@ -8,7 +8,6 @@ using Zenject;
 public class EnemyController : IPooledObject
 {
     [SerializeField] private float averageSpeed;
-    [SerializeField] int maxHealth;
     private int currentHealth;
     EnemyView _enemyView;
     EnemyPath _enemyPath;
@@ -25,9 +24,8 @@ public class EnemyController : IPooledObject
         _enemyView = enemyView;
         _playerHealth = playerHealth;
         _enemyPath = enemyPath;
-
-        currentHealth = maxHealth;
         _enemyView._enemyController = this;
+        currentHealth = _enemyView.maxHealth;
         _enemyView._enemyPath = _enemyPath;
         _enemyView.OnObjectSpawn();
     }

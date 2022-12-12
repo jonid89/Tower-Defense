@@ -16,7 +16,7 @@ public class Tower : MonoBehaviour
 
     void Start()
     {
-        float _cooldown = fireRate;        
+        float _cooldown = fireRate;       
     }
 
     

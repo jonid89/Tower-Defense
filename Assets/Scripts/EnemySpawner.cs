@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
 
     
     void spawnEnemy(){
-        _objectPooler.SpawnObject(ObjectPooler.PoolType.Enemy,transform.position,Quaternion.identity, this.transform.parent);
+        _objectPooler.SpawnObject(ObjectPooler.PoolType.Enemy,transform.position,Quaternion.identity, this.transform);
     }
 
     /*public void AddEnemyToList(EnemyView enemy){

@@ -12,12 +12,11 @@ public class ProjectileView : MonoBehaviour, IPooledObject
 
     public void OnObjectSpawn()
     {
-        //Debug.Log("projectileSpawned");
-        //_projectileController.fireAtEnemy();
+
     }
 
 
-        public class Pool : MemoryPool<ProjectileView>
+    public class Pool : MemoryPool<ProjectileView>
     {
         
     }

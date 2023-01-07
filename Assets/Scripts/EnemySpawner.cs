@@ -7,17 +7,16 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private float spawnRate = 3f;
     [SerializeField] private int enemiesCount = 1;
-    [SerializeField] LevelManager levelManager;
+    LevelManagerController _levelManagerController;
 
     ObjectPooler _objectPooler;
     private float cooldown = 0f;    
     private List<GameObject> enemies = new List<GameObject>();
 
-    
-
     [Inject]
-    public void Construct (ObjectPooler objectPooler) {
+    public void Construct (ObjectPooler objectPooler, LevelManagerController levelManagerController) {
         _objectPooler = objectPooler;
+        _levelManagerController = levelManagerController;
     }
 
 
@@ -41,7 +40,11 @@ public class EnemySpawner : MonoBehaviour
     }
 
     private IEnumerator LastEnemySent(){
-        yield return new WaitForSeconds( 10.0f );
-        levelManager.LevelWon();
+        yield return new WaitForSeconds( 15.0f );
+        _levelManagerController.LevelWon();
     }
 }
+
+
+
+

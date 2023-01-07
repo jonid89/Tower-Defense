@@ -7,11 +7,13 @@ public class ObjectPooler
 
     private EnemyView.Pool _enemyViewPool;
     private ProjectileView.Pool _projectileViewPool;
-    private Tower.Factory _towerFactory;
+    private TowerView.Pool _towerViewPool;
+    
     private ProjectileController.Factory _projectileControllerFactory;
     private EnemyController.Factory _enemyControllerFactory;
+    private TowerController.Factory _towerControllerFactory;
 
-    private LevelManager _levelManager;
+    private LevelManagerController _levelManagerController;
 
     private EnemyPath _enemyPath;
 
@@ -24,14 +26,19 @@ public class ObjectPooler
     }
 
 
-    public ObjectPooler(EnemyView.Pool enemyViewPool, EnemyController.Factory enemyControllerFactory, LevelManager levelManager,
-     EnemyPath enemyPath, Tower.Factory towerFactory, ProjectileController.Factory projectileControllerFactory, ProjectileView.Pool projectileViewPool) 
+    public ObjectPooler(
+        EnemyView.Pool enemyViewPool, EnemyController.Factory enemyControllerFactory, 
+        LevelManagerController levelManagerController,
+        EnemyPath enemyPath, 
+        TowerView.Pool towerViewPool, TowerController.Factory towerControllerFactory, 
+        ProjectileView.Pool projectileViewPool, ProjectileController.Factory projectileControllerFactory) 
     {
         _enemyViewPool = enemyViewPool;
         _enemyControllerFactory = enemyControllerFactory;
-        _levelManager = levelManager;
+        _levelManagerController = levelManagerController;
         _enemyPath = enemyPath;
-        _towerFactory = towerFactory;
+        _towerViewPool = towerViewPool;
+        _towerControllerFactory =  towerControllerFactory;
         _projectileControllerFactory =  projectileControllerFactory;
         _projectileViewPool = projectileViewPool;
     }
@@ -54,12 +61,13 @@ public class ObjectPooler
             var _enemyView = _enemyViewPool.Spawn();
             obj = _enemyView.gameObject;
             SetObjTransformValues();
-            _enemyControllerFactory.Create(_enemyView, _levelManager, _enemyPath);
+            _enemyControllerFactory.Create(_enemyView, _levelManagerController, _enemyPath);
             break;
         case PoolType.Tower:
-            Tower _tower = _towerFactory.Create();
-            obj = _tower.gameObject;
+            var _towerView = _towerViewPool.Spawn();
+            obj = _towerView.gameObject;
             SetObjTransformValues();
+            _towerControllerFactory.Create(_towerView, this);
             break;
         }
 

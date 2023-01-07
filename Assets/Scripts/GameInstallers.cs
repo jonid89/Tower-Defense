@@ -10,10 +10,10 @@ public class GameInstallers : MonoInstaller
     private EnemyPath _enemyPath;
     
     [SerializeField]
-    private LevelManager _levelManager;
+    private LevelManagerView _levelManagerView;
 
   [SerializeField]
-    private HealthBar _healthbar;
+    private HealthBarView _healthbar;
     
     [SerializeField]
     private GameObject EnemyPrefab;
@@ -28,15 +28,20 @@ public class GameInstallers : MonoInstaller
     {
         
         Container.Bind<EnemyPath>().FromInstance(_enemyPath).AsSingle().NonLazy();
-        Container.Bind<HealthBar>().FromInstance(_healthbar).AsSingle().NonLazy();
-        Container.Bind<LevelManager>().FromInstance(_levelManager).AsSingle().NonLazy();
+        
+        Container.Bind<HealthBarView>().FromInstance(_healthbar).AsSingle().NonLazy();
+        Container.Bind<HealthBarController>().AsSingle().NonLazy();
+        
+        Container.Bind<LevelManagerView>().FromInstance(_levelManagerView).AsSingle().NonLazy();
+        Container.Bind<LevelManagerController>().AsSingle().NonLazy();
         
         Container.BindInterfacesAndSelfTo<ObjectPooler>().AsSingle().NonLazy();
         
-        Container.BindFactory<EnemyView, LevelManager, EnemyPath, EnemyController, EnemyController.Factory>();
+        Container.BindFactory<EnemyView, LevelManagerController, EnemyPath, EnemyController, EnemyController.Factory>();
         Container.BindMemoryPool<EnemyView, EnemyView.Pool>().FromComponentInNewPrefab(EnemyPrefab).NonLazy();
 
-        Container.BindFactory<Tower, Tower.Factory>().FromComponentInNewPrefab(TowerPrefab);
+        Container.BindFactory<TowerView, ObjectPooler, TowerController, TowerController.Factory>();
+        Container.BindMemoryPool<TowerView, TowerView.Pool>().FromComponentInNewPrefab(TowerPrefab).NonLazy();
         
         Container.BindFactory<ProjectileView, ProjectileController, ProjectileController.Factory>();
         Container.BindMemoryPool<ProjectileView, ProjectileView.Pool>().FromComponentInNewPrefab(ProjectilePrefab).NonLazy();

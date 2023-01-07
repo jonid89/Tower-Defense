@@ -12,7 +12,7 @@ public class EnemyController : IPooledObject
     private int currentHealth;
     EnemyView _enemyView;
     EnemyPath _enemyPath;
-    LevelManager _levelManager;
+    LevelManagerController _levelManagerController;
     private List<Vector3> waypointsPositions = new List<Vector3>();
     private Tweener path;
     private Animator animator;
@@ -21,9 +21,9 @@ public class EnemyController : IPooledObject
     private Vector2 direction = new Vector2();
 
 
-    public EnemyController(EnemyView enemyView, LevelManager levelManager, EnemyPath enemyPath) {
+    public EnemyController(EnemyView enemyView, LevelManagerController levelManagerController, EnemyPath enemyPath) {
         _enemyView = enemyView;
-        _levelManager = levelManager;
+        _levelManagerController = levelManagerController;
         _enemyPath = enemyPath;
         _enemyView._enemyController = this;
         currentHealth = _enemyView.maxHealth;
@@ -40,11 +40,8 @@ public class EnemyController : IPooledObject
 
 
     public void EndReached(){
-        _levelManager.DamagePlayer();
+        _levelManagerController.DamagePlayer();
         _enemyView.EndEnemy();
-        /*gameObject.SetActive(false);
-        path.Restart();
-        path.Kill();*/
     }
 
 
@@ -54,13 +51,10 @@ public class EnemyController : IPooledObject
         if (currentHealth <= 0 )
         {
             _enemyView.EndEnemy();
-            /*path.Restart();
-            path.Kill();
-            _enemyView.gameObject.SetActive(false);*/
         }
     }
 
-    public class Factory : PlaceholderFactory<EnemyView, LevelManager, EnemyPath, EnemyController>
+    public class Factory : PlaceholderFactory<EnemyView, LevelManagerController, EnemyPath, EnemyController>
     {
     }
 }

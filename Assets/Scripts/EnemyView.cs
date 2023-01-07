@@ -17,7 +17,6 @@ public class EnemyView : MonoBehaviour, IPooledObject
     public EnemyPath _enemyPath;
     private List<Vector3> _waypointsPositions = new List<Vector3>();
     public Tweener _path;
-    private Animator _animator;
     private Vector2 _startPoint = new Vector2();
     private Vector2 _finalPoint = new Vector2();
     private Vector2 _direction = new Vector2();

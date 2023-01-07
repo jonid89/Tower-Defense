@@ -16,8 +16,6 @@ public class TowerSlot : MonoBehaviour
         _objectPooler = objectPooler;
     }
 
-
-
     void OnMouseDown(){
         if(hasTower != true){
             _objectPooler.SpawnObject(ObjectPooler.PoolType.Tower,transform.position,Quaternion.identity, this.transform);

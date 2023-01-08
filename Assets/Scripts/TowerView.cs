@@ -11,7 +11,7 @@ public class TowerView : MonoBehaviour, IPooledObject
 {
     [SerializeField] public float _fireRate = 4f;
     [SerializeField] private Collider2D _collider;
-    public Collider2D MyValue{
+    public Collider2D MyCollider{
         get { return _collider;}
     }
     public bool _hasTarget;

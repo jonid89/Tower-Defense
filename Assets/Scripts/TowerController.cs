@@ -25,7 +25,7 @@ public class TowerController : IPooledObject
 
     public void OnObjectSpawn()
     { 
-        collider =  _towerView.MyValue;
+        collider =  _towerView.MyCollider;
         
         collider.OnTriggerEnter2DAsObservable().Subscribe(other => ObjectEnteredPerimeter(other));
         collider.OnTriggerExit2DAsObservable().Subscribe(other => ObjectExitedPerimeter(other));

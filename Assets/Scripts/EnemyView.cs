@@ -15,7 +15,6 @@ public class EnemyView : MonoBehaviour, IPooledObject
     [SerializeField] public float _timeToFinishPath;
     public EnemyController _enemyController;
     public EnemyPath _enemyPath;
-    private List<Vector3> _waypointsPositions = new List<Vector3>();
     [SerializeField] public SpriteRenderer _spriteRenderer;
     [SerializeField] public List<Sprite> _spritesWalkLeft;
     [SerializeField] public List<Sprite> _spritesWalkRight;

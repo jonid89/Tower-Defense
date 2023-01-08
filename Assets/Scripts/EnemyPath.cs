@@ -6,32 +6,28 @@ using DG.Tweening;
 
 public class EnemyPath : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyWaypoints;
+    [SerializeField] private GameObject _enemyWaypoints;
 
-    private List<Transform> waypoints;
-    private List<Vector3> waypointsPositions = new List<Vector3>();
+    private List<Transform> _waypoints;
+    private List<Vector3> _waypointsPositions = new List<Vector3>();
     
-    private GameObject target;
-
-    private int nextWaypointIndex;
-
     
 
     private void OnEnable()
     {
-        waypoints = enemyWaypoints.GetComponentsInChildren<Transform>().ToList();
+        _waypoints = _enemyWaypoints.GetComponentsInChildren<Transform>().ToList();
         
-        waypoints.RemoveAt(index:0);
+        _waypoints.RemoveAt(index:0);
         
-        foreach (Transform waypoint in waypoints)
+        foreach (Transform waypoint in _waypoints)
         {
-            waypointsPositions.Add(waypoint.position);
+            _waypointsPositions.Add(waypoint.position);
         }
     }
 
     public List<Vector3> getWaypoints()
     {
-        return waypointsPositions;
+        return _waypointsPositions;
     }
     
 

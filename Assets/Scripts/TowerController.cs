@@ -8,15 +8,13 @@ using UniRx.Triggers;
 
 public class TowerController : IPooledObject
 {
-    private float cooldown;
+    private float _cooldown;
     ObjectPooler _objectPooler;
-
     private List<EnemyView> enemies = new List<EnemyView>();
-    private EnemyView target;
+    private EnemyView _target;
     TowerView _towerView;
     private Collider2D collider;
 
-    
     public TowerController(TowerView towerView, ObjectPooler objectPooler){
       _objectPooler = objectPooler;
       _towerView = towerView;
@@ -37,7 +35,7 @@ public class TowerController : IPooledObject
     private void FireIfEnemy()
     {
             GetCurrentTarget();
-            if(target != null)
+            if(_target != null)
             {
                 _towerView.CheckCooldown(true, () => {createProjectile(); });
             }
@@ -64,25 +62,23 @@ public class TowerController : IPooledObject
         {
             enemies.Remove(enemy);
             FireIfEnemy();
-            if (target == null){
+            if (_target == null){
                 _towerView._hasTarget = false;
             }
         }        
     }
 
-
     public EnemyView getTarget(){
-        return target;
+        return _target;
     }
 
     private void GetCurrentTarget()
     {
-        target = enemies.Count > 0 ? enemies[0] : null;
+        _target = enemies.Count > 0 ? enemies[0] : null;
     }
 
     public class Factory : PlaceholderFactory<TowerView, ObjectPooler, TowerController>
     {
-
     }
 
 }

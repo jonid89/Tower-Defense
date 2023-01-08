@@ -6,8 +6,8 @@ using Zenject;
 
 public class ProjectileController : IPooledObject
 {
-    private EnemyView enemy = null;
-    private Vector3 enemyPosition;
+    private EnemyView _enemy = null;
+    private Vector3 _enemyPosition;
 
     ProjectileView _projectileView;
     
@@ -23,14 +23,14 @@ public class ProjectileController : IPooledObject
     }
 
     public void fireAtEnemy(){
-        enemy = _projectileView.transform.parent.GetComponent<TowerView>()._towerController.getTarget();
-        enemyPosition = enemy.GetComponent<Transform>().position;
+        _enemy = _projectileView.transform.parent.GetComponent<TowerView>()._towerController.getTarget();
+        _enemyPosition = _enemy.GetComponent<Transform>().position;
         Vector3 projectilePos = _projectileView.transform.position;
-        DOTween.To(()=> projectilePos, x=>_projectileView.transform.position=x, enemyPosition,_projectileView.speed)
+        DOTween.To(()=> projectilePos, x=>_projectileView.transform.position=x, _enemyPosition,_projectileView._speed)
             .SetEase(Ease.Linear)
             .OnStepComplete( () => 
                 {
-                    enemy._enemyController.GetDamage(_projectileView.damage);
+                    _enemy._enemyController.GetDamage(_projectileView._damage);
                     _projectileView.gameObject.SetActive(false);
                 }
                 );

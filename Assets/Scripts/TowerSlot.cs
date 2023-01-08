@@ -7,19 +7,17 @@ using Zenject;
 public class TowerSlot : MonoBehaviour
 {
     ObjectPooler _objectPooler;
-    private bool hasTower = false;
+    private bool _hasTower = false;
     
-    private GameObject tower;
-
     [Inject]
     public void Construct (ObjectPooler objectPooler) {
         _objectPooler = objectPooler;
     }
 
     void OnMouseDown(){
-        if(hasTower != true){
+        if(_hasTower != true){
             _objectPooler.SpawnObject(ObjectPooler.PoolType.Tower,transform.position,Quaternion.identity, this.transform);
-            hasTower = true;
+            _hasTower = true;
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }else{
             UpgradeTower();

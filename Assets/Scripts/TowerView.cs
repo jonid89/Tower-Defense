@@ -11,42 +11,37 @@ public class TowerView : MonoBehaviour, IPooledObject
 {
     [SerializeField] public float _fireRate = 4f;
     [SerializeField] private Collider2D _collider;
-    public TowerController _towerController;
-
-    public bool _hasTarget;
-    
     public Collider2D MyValue{
         get { return _collider;}
     }
-
-    private float cooldown;
-    private Action timerCallback;
+    public bool _hasTarget;
+    private float _cooldown;
+    private Action _timerCallback;
+    public TowerController _towerController;
 
     public void OnObjectSpawn()
     {
         _hasTarget = false;
-        cooldown = 0f;
+        _cooldown = 0f;
     }
 
     void Update()
     {
 
-        if (cooldown > 0f ) cooldown -= Time.deltaTime;
+        if (_cooldown > 0f ) _cooldown -= Time.deltaTime;
         else if  (_hasTarget){
-            timerCallback();
-            cooldown = _fireRate;
+            _timerCallback();
+            _cooldown = _fireRate;
         }
     }
 
     public void CheckCooldown(bool hasTarget, Action timerCallback){
         this._hasTarget = hasTarget;
-        this.timerCallback = timerCallback;
+        this._timerCallback = timerCallback;
     }
-
 
     public class Pool : MemoryPool<TowerView>
     {
-
     }
     
 }

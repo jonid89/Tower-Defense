@@ -6,20 +6,17 @@ using Zenject;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private float spawnRate = 3f;
-    [SerializeField] private int enemiesCount = 1;
+    [SerializeField] private int enemiesCount;
     LevelManagerController _levelManagerController;
 
     ObjectPooler _objectPooler;
     private float cooldown = 0f;    
-    private List<GameObject> enemies = new List<GameObject>();
 
     [Inject]
     public void Construct (ObjectPooler objectPooler, LevelManagerController levelManagerController) {
         _objectPooler = objectPooler;
         _levelManagerController = levelManagerController;
     }
-
-
 
     void Update()
     {
@@ -33,7 +30,6 @@ public class EnemySpawner : MonoBehaviour
             StartCoroutine(LastEnemySent());
         }
     }
-
     
     void spawnEnemy(){
         _objectPooler.SpawnObject(ObjectPooler.PoolType.Enemy,transform.position,Quaternion.identity, this.transform);

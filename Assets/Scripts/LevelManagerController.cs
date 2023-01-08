@@ -8,18 +8,16 @@ using UniRx;
 
 public class LevelManagerController
 {
-    private GameObject _gameOverPanel;
-    private GameObject _levelWonPanel;
+    private GameOver _gameOverPanel;
+    private LevelWon _levelWonPanel;
     LevelManagerView _levelManagerView;
-
     HealthBarController _healthBar;
-    
 
     public LevelManagerController (LevelManagerView levelManagerView, HealthBarController healthBar){
         _levelManagerView = levelManagerView;
         _healthBar = healthBar;
-        _gameOverPanel = _levelManagerView.gameOverPanel;
-        _levelWonPanel = _levelManagerView.levelWonPanel;
+        _gameOverPanel = _levelManagerView._gameOverPanel;
+        _levelWonPanel = _levelManagerView._levelWonPanel;
     }
 
     public void RestartLevel(){
@@ -29,18 +27,22 @@ public class LevelManagerController
 
     public void GameOver(){
         Time.timeScale = 0;
-        _gameOverPanel.SetActive(true);
+        _gameOverPanel.gameObject.SetActive(true);
+        _gameOverPanel._myButton.OnClickAsObservable()
+            .Subscribe(_ => RestartLevel());
     }
 
     public void LevelWon(){
         Time.timeScale = 0;
-        _levelWonPanel.SetActive(true);
+        _levelWonPanel.gameObject.SetActive(true);
+        _levelWonPanel._myButton.OnClickAsObservable()
+            .Subscribe(_ => RestartLevel());
     }
 
     public void DamagePlayer(){
 
         _healthBar.DamageHealth();
-        if (_healthBar.lives.Count == 0 ){
+        if (_healthBar._lives.Count == 0 ){
             GameOver();            
         }
     }

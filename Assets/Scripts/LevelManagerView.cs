@@ -8,7 +8,7 @@ using UniRx;
 
 public class LevelManagerView : MonoBehaviour
 {
-    [SerializeField] public GameObject gameOverPanel;
-    [SerializeField] public GameObject levelWonPanel;
+    [SerializeField] public GameOver _gameOverPanel;
+    [SerializeField] public LevelWon _levelWonPanel;
 
 }

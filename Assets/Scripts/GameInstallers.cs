@@ -12,17 +12,17 @@ public class GameInstallers : MonoInstaller
     [SerializeField]
     private LevelManagerView _levelManagerView;
 
-  [SerializeField]
+   [SerializeField]
     private HealthBarView _healthbar;
     
     [SerializeField]
-    private GameObject EnemyPrefab;
+    private GameObject _enemyPrefab;
     
     [SerializeField]
-    private GameObject TowerPrefab;
+    private GameObject _towerPrefab;
 
     [SerializeField]
-    private GameObject ProjectilePrefab;
+    private GameObject _projectilePrefab;
     
     public override void InstallBindings()
     {
@@ -38,13 +38,13 @@ public class GameInstallers : MonoInstaller
         Container.BindInterfacesAndSelfTo<ObjectPooler>().AsSingle().NonLazy();
         
         Container.BindFactory<EnemyView, LevelManagerController, EnemyPath, EnemyController, EnemyController.Factory>();
-        Container.BindMemoryPool<EnemyView, EnemyView.Pool>().FromComponentInNewPrefab(EnemyPrefab).NonLazy();
+        Container.BindMemoryPool<EnemyView, EnemyView.Pool>().FromComponentInNewPrefab(_enemyPrefab).NonLazy();
 
         Container.BindFactory<TowerView, ObjectPooler, TowerController, TowerController.Factory>();
-        Container.BindMemoryPool<TowerView, TowerView.Pool>().FromComponentInNewPrefab(TowerPrefab).NonLazy();
+        Container.BindMemoryPool<TowerView, TowerView.Pool>().FromComponentInNewPrefab(_towerPrefab).NonLazy();
         
         Container.BindFactory<ProjectileView, ProjectileController, ProjectileController.Factory>();
-        Container.BindMemoryPool<ProjectileView, ProjectileView.Pool>().FromComponentInNewPrefab(ProjectilePrefab).NonLazy();
+        Container.BindMemoryPool<ProjectileView, ProjectileView.Pool>().FromComponentInNewPrefab(_projectilePrefab).NonLazy();
 
 
     }

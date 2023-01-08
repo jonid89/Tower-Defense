@@ -11,7 +11,7 @@ using DG.Tweening;
 public class EnemyView : MonoBehaviour, IPooledObject
 {
 
-    [SerializeField] public int maxHealth;
+    [SerializeField] public int _maxHealth;
     [SerializeField] private float _timeToFinishPath;
     public EnemyController _enemyController;
     public EnemyPath _enemyPath;

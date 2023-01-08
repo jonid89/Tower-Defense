@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HealthBarView : MonoBehaviour
 {
-    [SerializeField] public List<GameObject> lives = new List<GameObject>();
-
+    [SerializeField] public List<GameObject> _lives = new List<GameObject>();
 
 }

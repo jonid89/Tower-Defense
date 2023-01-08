@@ -6,15 +6,12 @@ using Zenject;
 
 public class ProjectileView : MonoBehaviour, IPooledObject
 {
-    [SerializeField] public float speed = 10f;
-    [SerializeField] public int damage = 5;
-    ProjectileController _projectileController;
+    [SerializeField] public float _speed = 1f;
+    [SerializeField] public int _damage = 5;
 
     public void OnObjectSpawn()
     {
-
     }
-
 
     public class Pool : MemoryPool<ProjectileView>
     {

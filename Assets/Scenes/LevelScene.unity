@@ -299,49 +299,6 @@ Transform:
   m_Children:
   - {fileID: 1681653335}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &156693731
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 156693733}
-  - component: {fileID: 156693732}
-  m_Layer: 0
-  m_Name: GameEvents
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &156693732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156693731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c12d277b9593cc439eeb1700812b460, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &156693733
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156693731}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &190809247
@@ -446,6 +403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 299910915}
+  - component: {fileID: 299910916}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -475,6 +433,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 944, y: 384}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &299910916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299910914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e52fd2dd3e3904e8ac148068655ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myButton: {fileID: 1732514810}
 --- !u!1 &373949829
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,19 +559,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 433907360}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: RestartLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
 --- !u!114 &433907360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,8 +804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6c63adb99952d4381ef383bdfb1659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverPanel: {fileID: 299910914}
-  levelWonPanel: {fileID: 1550138833}
+  _gameOverPanel: {fileID: 299910916}
+  _levelWonPanel: {fileID: 1550138835}
 --- !u!4 &496950066
 Transform:
   m_ObjectHideFlags: 0
@@ -978,7 +937,7 @@ Transform:
   m_Children:
   - {fileID: 190809248}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &522429683
 GameObject:
@@ -1075,7 +1034,7 @@ RectTransform:
   - {fileID: 299910915}
   - {fileID: 1550138834}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1283,7 +1242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8b653f33063e0c4285ede0b2d9b6c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyWaypoints: {fileID: 922098050}
+  _enemyWaypoints: {fileID: 922098050}
 --- !u!1 &922098050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,6 +1381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1550138834}
+  - component: {fileID: 1550138835}
   m_Layer: 5
   m_Name: LevelWon
   m_TagString: Untagged
@@ -1451,6 +1411,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 944, y: 384}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1550138835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550138833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ec4175f1e58c94ab1e99ee04ad416b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myButton: {fileID: 433907359}
 --- !u!1 &1598714707 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6442531497168068037, guid: e82142b0adea4d54d811e0528174f8dd, type: 3}
@@ -1727,19 +1700,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1732514811}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 496950064}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
 --- !u!114 &1732514811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1811,9 +1772,9 @@ MonoBehaviour:
   _enemyPath: {fileID: 772216357}
   _levelManagerView: {fileID: 496950065}
   _healthbar: {fileID: 1764373679}
-  EnemyPrefab: {fileID: 765566474949297385, guid: de8cf4e3ed4ebe34c9b2c87fcf55ec06, type: 3}
-  TowerPrefab: {fileID: 1120865586340843186, guid: 808516f66d0f3df469cedf2438d8c9a5, type: 3}
-  ProjectilePrefab: {fileID: 5674469527028032749, guid: 296f484a686c8e3489bce99e6c4d75cc, type: 3}
+  _enemyPrefab: {fileID: 765566474949297385, guid: de8cf4e3ed4ebe34c9b2c87fcf55ec06, type: 3}
+  _towerPrefab: {fileID: 1120865586340843186, guid: 808516f66d0f3df469cedf2438d8c9a5, type: 3}
+  _projectilePrefab: {fileID: 5674469527028032749, guid: 296f484a686c8e3489bce99e6c4d75cc, type: 3}
 --- !u!114 &1751188765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1911,7 +1872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61d17ac35c0fd141a558aaccfbd460f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives:
+  _lives:
   - {fileID: 1832792854}
   - {fileID: 1598714707}
   - {fileID: 38552590}
@@ -2025,7 +1986,7 @@ Transform:
   - {fileID: 1939575582}
   - {fileID: 110789037}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1832792854 stripped
 GameObject:

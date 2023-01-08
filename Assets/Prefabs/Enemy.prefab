@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428a36171927eb14c83632b211dd29b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  _maxHealth: 20
   _timeToFinishPath: 10
   _enemyPath: {fileID: 0}
   _spritesWalkLeft:

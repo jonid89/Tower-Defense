@@ -8,23 +8,17 @@ public class ObjectPooler
     private EnemyView.Pool _enemyViewPool;
     private ProjectileView.Pool _projectileViewPool;
     private TowerView.Pool _towerViewPool;
-    
     private ProjectileController.Factory _projectileControllerFactory;
     private EnemyController.Factory _enemyControllerFactory;
     private TowerController.Factory _towerControllerFactory;
-
     private LevelManagerController _levelManagerController;
-
     private EnemyPath _enemyPath;
-
-
     public enum PoolType
     {
         Tower=0,
         Enemy=10,
         Projectile=20
     }
-
 
     public ObjectPooler(
         EnemyView.Pool enemyViewPool, EnemyController.Factory enemyControllerFactory, 
@@ -42,8 +36,6 @@ public class ObjectPooler
         _projectileControllerFactory =  projectileControllerFactory;
         _projectileViewPool = projectileViewPool;
     }
-
-
 
     public void SpawnObject(PoolType type, Vector3 position, Quaternion rotation, Transform parent){
         

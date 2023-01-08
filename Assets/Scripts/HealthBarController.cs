@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class HealthBarController : IPooledObject
 {
-    public List<GameObject> lives = new List<GameObject>();
-
-    LevelManagerController _levelManager;
+    public List<GameObject> _lives = new List<GameObject>();
 
     HealthBarView _healthBarView;
-
 
     public HealthBarController(HealthBarView healthBarView){
         _healthBarView = healthBarView;
@@ -18,12 +15,12 @@ public class HealthBarController : IPooledObject
 
     public void OnObjectSpawn()
     {
-        lives = _healthBarView.lives;
+        _lives = _healthBarView._lives;
     }
 
     public void DamageHealth(){
-        lives[0].SetActive(false);
-        lives.RemoveAt(0);
+        _lives[0].SetActive(false);
+        _lives.RemoveAt(0);
     }
 
 }

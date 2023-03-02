@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using Zenject;
 using UniRx;
 
 
-public class EnemyController : IPooledObject
+public class EnemyController : IPooledObject, IDisposable
 {
     private int _currentHealth;
     private float _timeToFinishPath;
@@ -38,7 +39,7 @@ public class EnemyController : IPooledObject
         _startPoint = _transform.position;
         _waypointsPositions = _enemyPath.getWaypoints();
         
-        float speed = Random.Range(_timeToFinishPath-2,_timeToFinishPath+2);
+        float speed = UnityEngine.Random.Range(_timeToFinishPath-2,_timeToFinishPath+2);
 
         _path = _transform.DOPath(_waypointsPositions.ToArray(), speed, PathType.Linear, PathMode.Full3D)
             .SetEase(Ease.Linear)
@@ -85,6 +86,11 @@ public class EnemyController : IPooledObject
         _enemyView.gameObject.SetActive(false);
         _path.Restart();
         _path.Kill();
+        Dispose();
+    }
+
+    public void Dispose(){
+        Debug.Log("Dispose() called");
     }
 
     public class Factory : PlaceholderFactory<EnemyView, LevelManagerController, EnemyPath, EnemyController>

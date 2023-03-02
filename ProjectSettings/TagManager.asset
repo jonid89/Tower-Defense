@@ -14,7 +14,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - TowerSlot
   - 
   - Tower
   - 
@@ -41,6 +41,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: TowerSlot
+    uniqueID: 2631478695
     locked: 0
   - name: Projectile
     uniqueID: 3360489427

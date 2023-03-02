@@ -35,8 +35,10 @@ public class LevelManagerController
     public void LevelWon(){
         Time.timeScale = 0;
         _levelWonPanel.gameObject.SetActive(true);
-        _levelWonPanel._myButton.OnClickAsObservable()
+        _levelWonPanel._restartButton.OnClickAsObservable()
             .Subscribe(_ => RestartLevel());
+        _levelWonPanel._nextLevelButton.OnClickAsObservable()
+            .Subscribe(_ => SceneManager.LoadScene("Level2"));
     }
 
     public void DamagePlayer(){

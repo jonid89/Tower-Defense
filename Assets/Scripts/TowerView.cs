@@ -36,8 +36,8 @@ public class TowerView : MonoBehaviour, IPooledObject
     }
 
     public void CheckCooldown(bool hasTarget, Action timerCallback){
-        this._hasTarget = hasTarget;
-        this._timerCallback = timerCallback;
+        _hasTarget = hasTarget;
+        _timerCallback = timerCallback;
     }
 
     public class Pool : MemoryPool<TowerView>

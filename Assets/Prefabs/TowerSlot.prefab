@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1232348480974677225}
   - component: {fileID: 2090450943}
   - component: {fileID: 1016202034241919446}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TowerSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1663488601
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -4018070362304766166, guid: 5cfaca5a86002cd408a140af87a649eb, type: 3}
   m_Color: {r: 0.754717, g: 0.74403703, b: 0.74403703, a: 1}

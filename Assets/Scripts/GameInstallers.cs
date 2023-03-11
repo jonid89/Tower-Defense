@@ -14,6 +14,8 @@ public class GameInstallers : MonoInstaller
 
    [SerializeField]
     private HealthBarView _healthbar;
+    [SerializeField]
+    private EnemySpawnerView _enemySpawner;
     
     [SerializeField]
     private GameObject _enemyPrefab;
@@ -34,10 +36,13 @@ public class GameInstallers : MonoInstaller
         
         Container.Bind<LevelManagerView>().FromInstance(_levelManagerView).AsSingle().NonLazy();
         Container.Bind<LevelManagerController>().AsSingle().NonLazy();
+
+        Container.Bind<EnemySpawnerView>().FromInstance(_enemySpawner).AsSingle().NonLazy();
+        Container.Bind<EnemySpawnerController>().AsSingle().NonLazy();
         
         Container.BindInterfacesAndSelfTo<ObjectPooler>().AsSingle().NonLazy();
         
-        Container.BindFactory<EnemyView, LevelManagerController, EnemyPath, EnemyController, EnemyController.Factory>();
+        Container.BindFactory<EnemyView, EnemyView.Pool, LevelManagerController, EnemyPath, EnemyController, EnemyController.Factory>();
         Container.BindMemoryPool<EnemyView, EnemyView.Pool>().FromComponentInNewPrefab(_enemyPrefab).NonLazy();
 
         Container.BindFactory<TowerView, ObjectPooler, TowerController, TowerController.Factory>();

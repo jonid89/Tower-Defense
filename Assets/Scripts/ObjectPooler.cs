@@ -53,7 +53,7 @@ public class ObjectPooler
             var _enemyView = _enemyViewPool.Spawn();
             obj = _enemyView.gameObject;
             SetObjTransformValues();
-            _enemyControllerFactory.Create(_enemyView, _levelManagerController, _enemyPath);
+            _enemyControllerFactory.Create(_enemyView, _enemyViewPool,_levelManagerController, _enemyPath);
             break;
         case PoolType.Tower:
             var _towerView = _towerViewPool.Spawn();

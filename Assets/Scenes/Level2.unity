@@ -1946,6 +1946,7 @@ MonoBehaviour:
   _enemyPath: {fileID: 772216357}
   _levelManagerView: {fileID: 496950065}
   _healthbar: {fileID: 1764373679}
+  _enemySpawner: {fileID: 2108508108}
   _enemyPrefab: {fileID: 765566474949297385, guid: de8cf4e3ed4ebe34c9b2c87fcf55ec06, type: 3}
   _towerPrefab: {fileID: 1120865586340843186, guid: 808516f66d0f3df469cedf2438d8c9a5, type: 3}
   _projectilePrefab: {fileID: 5674469527028032749, guid: 296f484a686c8e3489bce99e6c4d75cc, type: 3}
@@ -17353,7 +17354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1364fd1501d6dff408c2fad070e5eb66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 0.5
+  spawnRate: 1
   enemiesCount: 3
 --- !u!1 &2112758263
 GameObject:

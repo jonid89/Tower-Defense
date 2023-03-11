@@ -12,6 +12,7 @@ public class EnemyController : IPooledObject, IDisposable
     private int _currentHealth;
     private float _timeToFinishPath;
     EnemyView _enemyView;
+    EnemyView.Pool _enemyViewPool;
     EnemyPath _enemyPath;
     private Transform _transform;
     LevelManagerController _levelManagerController;
@@ -21,8 +22,9 @@ public class EnemyController : IPooledObject, IDisposable
     private Vector2 _finalPoint = new Vector2();
     private Vector2 _direction = new Vector2();
 
-    public EnemyController(EnemyView enemyView, LevelManagerController levelManagerController, EnemyPath enemyPath) {
+    public EnemyController(EnemyView enemyView, EnemyView.Pool enemyViewPool, LevelManagerController levelManagerController, EnemyPath enemyPath) {
         _enemyView = enemyView;
+        _enemyViewPool = enemyViewPool;
         _levelManagerController = levelManagerController;
         _enemyPath = enemyPath;
         _enemyView._enemyController = this;
@@ -86,14 +88,15 @@ public class EnemyController : IPooledObject, IDisposable
         _enemyView.gameObject.SetActive(false);
         _path.Restart();
         _path.Kill();
+        _enemyViewPool.Despawn(_enemyView);
         Dispose();
     }
 
     public void Dispose(){
-        Debug.Log("Dispose() called");
+        //Debug.Log("Dispose() called");
     }
 
-    public class Factory : PlaceholderFactory<EnemyView, LevelManagerController, EnemyPath, EnemyController>
+    public class Factory : PlaceholderFactory<EnemyView, EnemyView.Pool, LevelManagerController, EnemyPath, EnemyController>
     {
     }
 }

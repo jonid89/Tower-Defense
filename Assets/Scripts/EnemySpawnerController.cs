@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using DG.Tweening;
 using Zenject;
 using UniRx;
 
-public class EnemySpawnerController : IPooledObject
+public class EnemySpawnerController : IPooledObject, IDisposable
 {
     LevelManagerController _levelManagerController;
     ObjectPooler _objectPooler;
@@ -13,7 +14,6 @@ public class EnemySpawnerController : IPooledObject
     private int enemiesCount;
 
     public EnemySpawnerController(EnemySpawnerView enemySpawnerView, ObjectPooler objectPooler, LevelManagerController levelManagerController) {
-        Debug.Log("EnemySpawnerController Constructor called");
         _enemySpawnerView = enemySpawnerView;
         _objectPooler = objectPooler;
         _levelManagerController = levelManagerController;
@@ -34,6 +34,10 @@ public class EnemySpawnerController : IPooledObject
 
     void LevelWon(){
         _levelManagerController.LevelWon();
+        Dispose();
+    }
+
+    public void Dispose(){
     }
 
 }

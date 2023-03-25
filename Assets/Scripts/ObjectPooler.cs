@@ -39,7 +39,7 @@ public class ObjectPooler
 
     public void SpawnObject(PoolType type, Vector3 position, Quaternion rotation, Transform parent){
         
-        GameObject obj = new GameObject();
+        GameObject obj;
 
         switch (type)
         {

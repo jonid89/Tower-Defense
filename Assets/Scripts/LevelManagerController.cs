@@ -6,7 +6,7 @@ using DG.Tweening;
 using Zenject;
 using UniRx;
 
-public class LevelManagerController
+public class LevelManagerController: IInitializable
 {
     private GameOver _gameOverPanel;
     private LevelWon _levelWonPanel;
@@ -20,9 +20,12 @@ public class LevelManagerController
         _levelWonPanel = _levelManagerView._levelWonPanel;
     }
 
+    public void Initialize(){
+        Time.timeScale = 1.0f;
+    }    
+
     public void RestartLevel(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1;
     }
 
     public void GameOver(){

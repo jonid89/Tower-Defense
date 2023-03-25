@@ -35,7 +35,7 @@ public class GameInstallers : MonoInstaller
         Container.Bind<HealthBarController>().AsSingle().NonLazy();
         
         Container.Bind<LevelManagerView>().FromInstance(_levelManagerView).AsSingle().NonLazy();
-        Container.Bind<LevelManagerController>().AsSingle().NonLazy();
+        Container.BindInterfacesAndSelfTo<LevelManagerController>().AsSingle().NonLazy();
 
         Container.Bind<EnemySpawnerView>().FromInstance(_enemySpawner).AsSingle().NonLazy();
         Container.Bind<EnemySpawnerController>().AsSingle().NonLazy();

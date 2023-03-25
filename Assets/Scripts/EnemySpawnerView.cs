@@ -22,8 +22,7 @@ public class EnemySpawnerView : MonoBehaviour
     {
     cooldown -= Time.deltaTime;
         if(cooldown <= 0 && !_lastEnemy){
-            
-            _spawn(); //spawnEnemy();
+            _spawn(); 
             cooldown = spawnRate;
         }
         else if(_lastEnemy){

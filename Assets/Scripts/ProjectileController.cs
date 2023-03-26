@@ -33,7 +33,7 @@ public class ProjectileController : IPooledObject
                     _enemy._enemyController.GetDamage(_projectileView._damage);
                     _projectileView.gameObject.SetActive(false);
                 }
-                );
+            );
 
     }
 

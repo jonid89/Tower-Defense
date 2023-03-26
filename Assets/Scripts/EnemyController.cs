@@ -86,6 +86,7 @@ public class EnemyController : IPooledObject, IDisposable
 
     public void EndEnemy(){
         _enemyView.gameObject.SetActive(false);
+        _levelManagerController.EnemyDestroyed();
         _path.Restart();
         _path.Kill();
         _enemyViewPool.Despawn(_enemyView);

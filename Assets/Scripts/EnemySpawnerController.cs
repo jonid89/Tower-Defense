@@ -11,7 +11,7 @@ public class EnemySpawnerController : IPooledObject, IDisposable
     LevelManagerController _levelManagerController;
     ObjectPooler _objectPooler;
     EnemySpawnerView _enemySpawnerView;
-    private int enemiesCount;
+    private int enemiesAmount;
 
     public EnemySpawnerController(EnemySpawnerView enemySpawnerView, ObjectPooler objectPooler, LevelManagerController levelManagerController) {
         _enemySpawnerView = enemySpawnerView;
@@ -22,18 +22,19 @@ public class EnemySpawnerController : IPooledObject, IDisposable
 
 
     public void OnObjectSpawn(){
-        enemiesCount = _enemySpawnerView.GetEnemiesCount;
+        enemiesAmount = _enemySpawnerView.GetEnemiesCount;
+        _levelManagerController.enemiesCount = enemiesAmount;
+        _levelManagerController.DisplayEnemiesCount();
         _enemySpawnerView.CheckCooldown(() => {spawnEnemy(); });
     }
 
     void spawnEnemy(){
         _objectPooler.SpawnObject(ObjectPooler.PoolType.Enemy,_enemySpawnerView.transform.position,Quaternion.identity, _enemySpawnerView.transform);
-        enemiesCount -- ;
-        if(enemiesCount <= 0) _enemySpawnerView.WaitLevelWon(() => {LevelWon(); });
+        enemiesAmount -- ;
+        if(enemiesAmount <= 0) _enemySpawnerView.LastEnemySent();
     }
 
     void LevelWon(){
-        _levelManagerController.LevelWon();
         Dispose();
     }
 

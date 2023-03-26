@@ -17,6 +17,9 @@ public class EnemySpawnerView : MonoBehaviour
     private Action _spawn;
     private Action _levelWon;
     bool _lastEnemy;
+    public Transform MyTransform{
+        get { return this.gameObject.transform;}
+    }
 
     void Update()
     {
@@ -25,25 +28,15 @@ public class EnemySpawnerView : MonoBehaviour
             _spawn(); 
             cooldown = spawnRate;
         }
-        else if(_lastEnemy){
-            StartCoroutine(LastEnemySent());
-        }
     }
     
     public void CheckCooldown(Action spawn){
         _spawn = spawn;
     }
 
-    public void WaitLevelWon(Action levelWon){
+    public void LastEnemySent(){
         _lastEnemy = true;
-        _levelWon = levelWon;
     }
-
-    private IEnumerator LastEnemySent(){
-        yield return new WaitForSeconds( 15.0f );
-        _levelWon();
-    }
-
 
     
 }

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 using Zenject;
 using UniRx;
+using UnityEngine.UI;
 
 public class LevelManagerController: IInitializable
 {
@@ -12,12 +13,15 @@ public class LevelManagerController: IInitializable
     private LevelWon _levelWonPanel;
     LevelManagerView _levelManagerView;
     HealthBarController _healthBar;
+    private Text _enemiesCountDisplayer;
+    public int enemiesCount;
 
     public LevelManagerController (LevelManagerView levelManagerView, HealthBarController healthBar){
         _levelManagerView = levelManagerView;
         _healthBar = healthBar;
         _gameOverPanel = _levelManagerView._gameOverPanel;
         _levelWonPanel = _levelManagerView._levelWonPanel;
+        _enemiesCountDisplayer = _levelManagerView._enemiesCountDisplayer;
     }
 
     public void Initialize(){
@@ -45,11 +49,22 @@ public class LevelManagerController: IInitializable
     }
 
     public void DamagePlayer(){
-
         _healthBar.DamageHealth();
         if (_healthBar._lives.Count == 0 ){
             GameOver();            
         }
+    }
+
+    public void EnemyDestroyed(){
+        enemiesCount -- ;
+        DisplayEnemiesCount();
+        if (enemiesCount <= 0 && _healthBar._lives.Count > 0){
+            LevelWon();
+        }
+    }
+
+    public void DisplayEnemiesCount(){
+        _enemiesCountDisplayer.text = $"Enemies: {enemiesCount}";
     }
 
 }

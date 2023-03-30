@@ -7,9 +7,9 @@ using Zenject;
 public class EnemySpawnerView : MonoBehaviour
 {
     [SerializeField] private float spawnRate = 3f;
-    [SerializeField] private int enemiesCount;
-    public int GetEnemiesCount{
-        get { return enemiesCount;}
+    [SerializeField] private int enemiesAmount;
+    public int GetEnemiesAmount{
+        get { return enemiesAmount;}
     }
     LevelManagerController _levelManagerController;
     ObjectPooler _objectPooler;

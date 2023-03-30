@@ -13,12 +13,14 @@ public class LevelManagerController: IInitializable
     private LevelWon _levelWonPanel;
     LevelManagerView _levelManagerView;
     HealthBarController _healthBar;
+    EnemySpawnerController _enemySpawnerController;
     private Text _enemiesCountDisplayer;
-    public int enemiesCount;
+    private int enemiesLeft;
 
-    public LevelManagerController (LevelManagerView levelManagerView, HealthBarController healthBar){
+    public LevelManagerController (LevelManagerView levelManagerView, HealthBarController healthBar, EnemySpawnerController enemySpawnerController){
         _levelManagerView = levelManagerView;
         _healthBar = healthBar;
+        _enemySpawnerController = enemySpawnerController;
         _gameOverPanel = _levelManagerView._gameOverPanel;
         _levelWonPanel = _levelManagerView._levelWonPanel;
         _enemiesCountDisplayer = _levelManagerView._enemiesCountDisplayer;
@@ -26,6 +28,8 @@ public class LevelManagerController: IInitializable
 
     public void Initialize(){
         Time.timeScale = 1.0f;
+        enemiesLeft = _enemySpawnerController.GetEnemiesAmount;
+        DisplayEnemiesCount();
     }    
 
     public void RestartLevel(){
@@ -56,15 +60,15 @@ public class LevelManagerController: IInitializable
     }
 
     public void EnemyDestroyed(){
-        enemiesCount -- ;
+        enemiesLeft -- ;
         DisplayEnemiesCount();
-        if (enemiesCount <= 0 && _healthBar._lives.Count > 0){
+        if (enemiesLeft <= 0 && _healthBar._lives.Count > 0){
             LevelWon();
         }
     }
 
     public void DisplayEnemiesCount(){
-        _enemiesCountDisplayer.text = $"Enemies: {enemiesCount}";
+        _enemiesCountDisplayer.text = $"Enemies: {enemiesLeft}";
     }
 
 }

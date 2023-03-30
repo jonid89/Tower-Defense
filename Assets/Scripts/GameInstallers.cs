@@ -12,7 +12,7 @@ public class GameInstallers : MonoInstaller
     [SerializeField]
     private LevelManagerView _levelManagerView;
 
-   [SerializeField]
+    [SerializeField]
     private HealthBarView _healthbar;
     [SerializeField]
     private EnemySpawnerView _enemySpawner;
@@ -51,10 +51,7 @@ public class GameInstallers : MonoInstaller
         Container.BindFactory<ProjectileView, ProjectileController, ProjectileController.Factory>();
         Container.BindMemoryPool<ProjectileView, ProjectileView.Pool>().FromComponentInNewPrefab(_projectilePrefab).NonLazy();
 
-
     }
-
-
     
 
 }

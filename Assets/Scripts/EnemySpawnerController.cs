@@ -8,30 +8,29 @@ using UniRx;
 
 public class EnemySpawnerController : IPooledObject, IDisposable
 {
-    LevelManagerController _levelManagerController;
     ObjectPooler _objectPooler;
     EnemySpawnerView _enemySpawnerView;
-    private int enemiesAmount;
+    private int enemiesToSpawn;
+    public int GetEnemiesAmount{
+        get { return enemiesToSpawn;}
+    }
 
-    public EnemySpawnerController(EnemySpawnerView enemySpawnerView, ObjectPooler objectPooler, LevelManagerController levelManagerController) {
+    public EnemySpawnerController(EnemySpawnerView enemySpawnerView, ObjectPooler objectPooler) {
         _enemySpawnerView = enemySpawnerView;
         _objectPooler = objectPooler;
-        _levelManagerController = levelManagerController;
         OnObjectSpawn();
     }
 
 
     public void OnObjectSpawn(){
-        enemiesAmount = _enemySpawnerView.GetEnemiesCount;
-        _levelManagerController.enemiesCount = enemiesAmount;
-        _levelManagerController.DisplayEnemiesCount();
+        enemiesToSpawn = _enemySpawnerView.GetEnemiesAmount;
         _enemySpawnerView.CheckCooldown(() => {spawnEnemy(); });
     }
 
     void spawnEnemy(){
         _objectPooler.SpawnObject(ObjectPooler.PoolType.Enemy,_enemySpawnerView.transform.position,Quaternion.identity, _enemySpawnerView.transform);
-        enemiesAmount -- ;
-        if(enemiesAmount <= 0) _enemySpawnerView.LastEnemySent();
+        enemiesToSpawn -- ;
+        if(enemiesToSpawn <= 0) _enemySpawnerView.LastEnemySent();
     }
 
     void LevelWon(){

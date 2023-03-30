@@ -17276,7 +17276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRate: 1
-  enemiesCount: 3
+  enemiesAmount: 3
 --- !u!1 &2112758263
 GameObject:
   m_ObjectHideFlags: 0

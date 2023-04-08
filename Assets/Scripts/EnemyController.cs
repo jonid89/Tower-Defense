@@ -86,10 +86,13 @@ public class EnemyController : IPooledObject, IDisposable
 
     public void EndEnemy(){
         _enemyView.gameObject.SetActive(false);
+        Debug.Log($"{_enemyView.gameObject.name} Deactivated");
         _levelManagerController.EnemyDestroyed();
+        Debug.Log($"{_enemyView.gameObject.name} Destroyed");
         _path.Restart();
         _path.Kill();
         _enemyViewPool.Despawn(_enemyView);
+        Debug.Log($"{_enemyView.gameObject.name} Despawned");
         Dispose();
     }
 
@@ -97,7 +100,7 @@ public class EnemyController : IPooledObject, IDisposable
         //Debug.Log("Dispose() called");
     }
 
-    public class Factory : PlaceholderFactory<EnemyView, EnemyView.Pool, LevelManagerController, EnemyPath, EnemyController>
+    public class Factory : PlaceholderFactory<EnemyView, EnemyView.Pool, EnemyPath, EnemyController>
     {
     }
 }

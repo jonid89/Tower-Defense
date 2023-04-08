@@ -11,7 +11,6 @@ public class ObjectPooler
     private ProjectileController.Factory _projectileControllerFactory;
     private EnemyController.Factory _enemyControllerFactory;
     private TowerController.Factory _towerControllerFactory;
-    private LevelManagerController _levelManagerController;
     private EnemyPath _enemyPath;
     public enum PoolType
     {
@@ -22,14 +21,12 @@ public class ObjectPooler
 
     public ObjectPooler(
         EnemyView.Pool enemyViewPool, EnemyController.Factory enemyControllerFactory, 
-        LevelManagerController levelManagerController,
         EnemyPath enemyPath, 
         TowerView.Pool towerViewPool, TowerController.Factory towerControllerFactory, 
         ProjectileView.Pool projectileViewPool, ProjectileController.Factory projectileControllerFactory) 
     {
         _enemyViewPool = enemyViewPool;
         _enemyControllerFactory = enemyControllerFactory;
-        _levelManagerController = levelManagerController;
         _enemyPath = enemyPath;
         _towerViewPool = towerViewPool;
         _towerControllerFactory =  towerControllerFactory;
@@ -53,7 +50,7 @@ public class ObjectPooler
             var _enemyView = _enemyViewPool.Spawn();
             obj = _enemyView.gameObject;
             SetObjTransformValues();
-            _enemyControllerFactory.Create(_enemyView, _enemyViewPool,_levelManagerController, _enemyPath);
+            _enemyControllerFactory.Create(_enemyView, _enemyViewPool, _enemyPath);
             break;
         case PoolType.Tower:
             var _towerView = _towerViewPool.Spawn();

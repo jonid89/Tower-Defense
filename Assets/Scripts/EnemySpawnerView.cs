@@ -9,7 +9,7 @@ public class EnemySpawnerView : MonoBehaviour
     [SerializeField] private float spawnRate = 3f;
     [SerializeField] private EnemyConfig _enemyConfig;
     public int GetEnemiesAmount{
-        get { return _enemyConfig.enemiesAmount;}
+        get { return _enemyConfig._enemiesAmount;}
     }
     LevelManagerController _levelManagerController;
     ObjectPooler _objectPooler;

@@ -5,9 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyConfigData", menuName = "ScriptableObjects/EnemiesData")]
 public class EnemyConfig : ScriptableObject
 {
-    public int enemiesAmount = 3;
-
-
+    public int _enemiesAmount = 3;
 
 
 }

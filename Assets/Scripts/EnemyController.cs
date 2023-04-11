@@ -72,10 +72,12 @@ public class EnemyController : IPooledObject, IDisposable
 
     public void GetDamage(int damage)
     {
-        _currentHealth -= damage;
-        if (_currentHealth <= 0 )
-        {
-            EndEnemy();
+        if(_currentHealth > 0){
+            _currentHealth -= damage;
+            if (_currentHealth <= 0 )
+            {
+                EndEnemy();
+            }
         }
     }
 

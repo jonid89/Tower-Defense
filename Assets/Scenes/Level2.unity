@@ -17470,7 +17470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRate: 1
-  _enemyConfig: {fileID: 11400000, guid: eae2ca3ee22a238428012f56f0f6ebb8, type: 2}
+  _enemyConfig: {fileID: 11400000, guid: ea50244739cb0be4c9499f972ef8a3f2, type: 2}
 --- !u!1 &2112758263
 GameObject:
   m_ObjectHideFlags: 0

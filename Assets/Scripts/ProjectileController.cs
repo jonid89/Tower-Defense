@@ -25,8 +25,15 @@ public class ProjectileController : IPooledObject
     public void fireAtEnemy(){
         _enemy = _projectileView.transform.parent.GetComponent<TowerView>()._towerController.getTarget();
         _enemyPosition = _enemy.GetComponent<Transform>().position;
+        //var enermyTransform = _enemy.gameObject.transform;
         Vector3 projectilePos = _projectileView.transform.position;
-        DOTween.To(()=> projectilePos, x=>_projectileView.transform.position=x, _enemyPosition,_projectileView._speed)
+        var startingPosition = _projectileView.transform.parent.transform.position;
+        DOTween.To(x=>{
+            _projectileView.transform.position = Vector3.Lerp(startingPosition, _enemy.gameObject.transform.position, x);
+        },
+            0,1, 1f)
+            
+        // DOTween.To(()=> projectilePos, x=>_projectileView.transform.position=x, _enemyPosition,_projectileView._speed)
             .SetEase(Ease.Linear)
             .OnStepComplete( () => 
                 {

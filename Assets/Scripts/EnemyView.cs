@@ -20,6 +20,7 @@ public class EnemyView : MonoBehaviour, IPooledObject
     [SerializeField] public List<Sprite> _spritesWalkRight;
     [SerializeField] public List<Sprite> _spritesWalkUp;
     [SerializeField] public List<Sprite> _spritesWalkDown;
+    [SerializeField] public List<Sprite> _spriteDead;
     public List<Sprite> _currentSprites;
     private int _spriteNumber = 0;
     [SerializeField] private float _animationSpeed = 0.3f;

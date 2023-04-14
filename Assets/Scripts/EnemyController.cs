@@ -66,7 +66,6 @@ public class EnemyController : IPooledObject, IDisposable
         if(_direction == Vector2.right){
             _enemyView._currentSprites = _enemyView._spritesWalkRight;
         }
-
         _startPoint = _finalPoint;
     }
 
@@ -76,7 +75,9 @@ public class EnemyController : IPooledObject, IDisposable
             _currentHealth -= damage;
             if (_currentHealth <= 0 )
             {
-                EndEnemy();
+                _enemyView._currentSprites = _enemyView._spriteDead;
+                _path.Kill();
+                _enemyView._spriteRenderer.DOFade(0,2f).OnComplete( () => EndEnemy());
             }
         }
     }
@@ -88,13 +89,12 @@ public class EnemyController : IPooledObject, IDisposable
 
     public void EndEnemy(){
         _enemyView.gameObject.SetActive(false);
-        Debug.Log($"{_enemyView.gameObject.name} Deactivated");
+        //Debug.Log($"{_enemyView.gameObject.name} Deactivated");
         _levelManagerController.EnemyDestroyed();
-        Debug.Log($"{_enemyView.gameObject.name} Destroyed");
+        //Debug.Log($"{_enemyView.gameObject.name} Destroyed");
         _path.Restart();
-        _path.Kill();
         _enemyViewPool.Despawn(_enemyView);
-        Debug.Log($"{_enemyView.gameObject.name} Despawned");
+        //Debug.Log($"{_enemyView.gameObject.name} Despawned");
         Dispose();
     }
 

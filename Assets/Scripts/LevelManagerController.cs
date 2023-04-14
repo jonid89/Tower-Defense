@@ -36,6 +36,10 @@ public class LevelManagerController: IInitializable
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void RestartGame(){
+        SceneManager.LoadScene("Level1");
+    }
+
     public void GameOver(){
         Time.timeScale = 0;
         _gameOverPanel.gameObject.SetActive(true);
@@ -45,11 +49,22 @@ public class LevelManagerController: IInitializable
 
     public void LevelWon(){
         Time.timeScale = 0;
-        _levelWonPanel.gameObject.SetActive(true);
-        _levelWonPanel._restartButton.OnClickAsObservable()
-            .Subscribe(_ => RestartLevel());
-        _levelWonPanel._nextLevelButton.OnClickAsObservable()
-            .Subscribe(_ => SceneManager.LoadScene("Level2"));
+        if(SceneManager.GetActiveScene().name != "Level2"){
+            _levelWonPanel.gameObject.SetActive(true);
+            _levelWonPanel._restartLevelButton.OnClickAsObservable()
+                .Subscribe(_ => RestartLevel());
+            _levelWonPanel._nextLevelButton.OnClickAsObservable()
+                .Subscribe(_ => SceneManager.LoadScene("Level2"));
+        }else{
+            _levelWonPanel._nextLevelButton.gameObject.SetActive(false);
+            _levelWonPanel._restartLevelButton.gameObject.transform.localPosition = new Vector3(0,-65,0);
+            _levelWonPanel._restartGameButton.gameObject.SetActive(true);
+            _levelWonPanel.gameObject.SetActive(true);
+            _levelWonPanel._restartLevelButton.OnClickAsObservable()
+                .Subscribe(_ => RestartLevel());
+            _levelWonPanel._restartGameButton.OnClickAsObservable()
+                .Subscribe(_ => RestartGame());
+        }
     }
 
     public void DamagePlayer(){

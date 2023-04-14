@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class LevelWon : MonoBehaviour
 {
-    [SerializeField] public Button _restartButton;
+    [SerializeField] public Button _restartLevelButton;
     [SerializeField] public Button _nextLevelButton;
+    [SerializeField] public Button _restartGameButton;
 
 }

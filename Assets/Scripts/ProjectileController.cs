@@ -25,6 +25,7 @@ public class ProjectileController : IPooledObject
         _towerParent = _projectileView.transform.parent.gameObject;
         _towerConfig = _towerParent.GetComponent<TowerView>().GetTowerConfig;
         _projectileDamage = _towerConfig._projectileDamage;
+        _projectilePathDuration = _towerConfig._projectilePathDuration;
     }
 
     public void fireAtEnemy(){

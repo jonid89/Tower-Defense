@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc65402cb5169664b979559bff246c89, type: 3}
   m_Name: TowerConfigData
   m_EditorClassIdentifier: 
-  _fireInterval: 2
-  _projectilePathDuration: 1
+  _fireInterval: 0.5
+  _projectilePathDuration: 0.5
   _projectileDamage: 5

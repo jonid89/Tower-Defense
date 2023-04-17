@@ -14,7 +14,7 @@ public class TowerController : IPooledObject
     private EnemyView _target;
     TowerView _towerView;
     private Collider2D collider;
-
+    private TowerConfig _towerConfig;
 
     public TowerController(TowerView towerView, ObjectPooler objectPooler){
       _objectPooler = objectPooler;
@@ -27,10 +27,10 @@ public class TowerController : IPooledObject
     public void OnObjectSpawn()
     { 
         collider =  _towerView.MyCollider;
-        
         collider.OnTriggerEnter2DAsObservable().Subscribe(other => ObjectEnteredPerimeter(other));
         collider.OnTriggerExit2DAsObservable().Subscribe(other => ObjectExitedPerimeter(other));
-
+        
+        _towerConfig = _towerView.GetTowerConfig;
     } 
     
     private void FireIfEnemy()

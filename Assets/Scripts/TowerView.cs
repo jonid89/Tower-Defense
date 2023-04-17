@@ -6,10 +6,12 @@ using Zenject;
 using UniRx;
 using UniRx.Triggers;
 
-
 public class TowerView : MonoBehaviour, IPooledObject
 {
     [SerializeField] private TowerConfig _towerConfig;
+    public TowerConfig GetTowerConfig{
+        get { return _towerConfig;}
+    }
     private float _fireInterval;
     [SerializeField] private Collider2D _collider;
     public Collider2D MyCollider{
@@ -29,7 +31,6 @@ public class TowerView : MonoBehaviour, IPooledObject
 
     void Update()
     {
-
         if (_cooldown > 0f ) _cooldown -= Time.deltaTime;
         else if  (_hasTarget){
             _timerCallback();

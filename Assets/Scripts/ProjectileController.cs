@@ -8,31 +8,37 @@ public class ProjectileController : IPooledObject
 {
     private EnemyView _enemy = null;
     private Vector3 _enemyPosition;
-
     ProjectileView _projectileView;
+    private GameObject _towerParent;
+    private TowerConfig _towerConfig;
+    private float _projectilePathDuration;
+    private int _projectileDamage;
     
     public ProjectileController(ProjectileView projectileView) {
         _projectileView = projectileView;
+        OnObjectSpawn();
         fireAtEnemy();
     }
 
     public void OnObjectSpawn()
     {
-        
+        _towerParent = _projectileView.transform.parent.gameObject;
+        _towerConfig = _towerParent.GetComponent<TowerView>().GetTowerConfig;
+        _projectileDamage = _towerConfig._projectileDamage;
     }
 
     public void fireAtEnemy(){
-        _enemy = _projectileView.transform.parent.GetComponent<TowerView>()._towerController.getTarget();
-        _enemyPosition = _enemy.GetComponent<Transform>().position;
+        _enemy = _towerParent.GetComponent<TowerView>()._towerController.getTarget();
+        _enemyPosition = _enemy.transform.position;
         Vector3 projectilePos = _projectileView.transform.position;
-        var startingPosition = _projectileView.transform.parent.transform.position;
+        var startingPosition = _towerParent.transform.position;
         
         DOTween.To(x=>{ _projectileView.transform.position = Vector3.Lerp(startingPosition, _enemy.gameObject.transform.position, x);},
-            0,1, 1f)
+            0,1, _projectilePathDuration)
             .SetEase(Ease.Linear)
             .OnStepComplete( () => 
                 {
-                    _enemy._enemyController.GetDamage(_projectileView._damage);
+                    _enemy._enemyController.GetDamage(_projectileDamage);
                     _projectileView.gameObject.SetActive(false);
                 }
             );

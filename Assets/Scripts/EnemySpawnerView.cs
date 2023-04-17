@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class EnemySpawnerView : MonoBehaviour
+public class EnemySpawnerView : MonoBehaviour, IPooledObject
 {
-    [SerializeField] private float spawnRate = 3f;
-    [SerializeField] private EnemyConfig _enemyConfig;
+    [SerializeField] private EnemySpawnerConfig _enemySapwnerConfig;
     public int GetEnemiesAmount{
-        get { return _enemyConfig._enemiesAmount;}
+        get { return _enemySapwnerConfig._enemiesAmount;}
     }
+    private float _spawnRate;
     LevelManagerController _levelManagerController;
     ObjectPooler _objectPooler;
     private float cooldown = 1f;    
@@ -21,12 +21,16 @@ public class EnemySpawnerView : MonoBehaviour
         get { return this.gameObject.transform;}
     }
 
+    public void OnObjectSpawn(){   
+            _spawnRate = _enemySapwnerConfig._enemiesSpawnRate;
+    }
+
     void Update()
     {
     cooldown -= Time.deltaTime;
         if(cooldown <= 0 && !_lastEnemy){
             _spawn(); 
-            cooldown = spawnRate;
+            cooldown = _spawnRate;
         }
     }
     
@@ -38,7 +42,6 @@ public class EnemySpawnerView : MonoBehaviour
         _lastEnemy = true;
     }
 
-    
 }
 
 

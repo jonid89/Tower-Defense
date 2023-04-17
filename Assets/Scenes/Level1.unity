@@ -16901,8 +16901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1364fd1501d6dff408c2fad070e5eb66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 1
-  _enemyConfig: {fileID: 11400000, guid: eae2ca3ee22a238428012f56f0f6ebb8, type: 2}
+  _enemySapwnerConfig: {fileID: 11400000, guid: b9bfedf768db74d44b3eea79ff4bab19, type: 2}
 --- !u!1001 &1232348482910903062
 PrefabInstance:
   m_ObjectHideFlags: 0

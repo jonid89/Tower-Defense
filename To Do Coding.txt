@@ -1,0 +1,27 @@
+
+! Tower shoots to enemy spawner when enemy killed (fix this) 
+
+Enemies name 
+
+
+Add tower config on projectileView in ObjectPooler <- could we pass Script config as a general parameter on the SpawnObject function?
+
+
+Put spawn rate variable onto EnemyConfig scriptable object script.... √
+
+fire rate should be fire interval √
+
+tower config √
+projectile duration to hit enemy √
+fire rate √
+
+
+
+
+
+Music
+
+
+
+
+

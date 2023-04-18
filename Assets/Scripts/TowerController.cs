@@ -39,7 +39,7 @@ public class TowerController : IPooledObject
         
         if(_target != null)
         {
-            _towerView.CheckCooldown(true, () => {createProjectile(); });
+            _towerView.CheckCooldown(true, () => {GetCurrentTarget(); createProjectile(); });
         }
         
     }
@@ -78,7 +78,6 @@ public class TowerController : IPooledObject
     private void GetCurrentTarget()
     {
         while(_enemies[0] != null && _enemies[0]._isDead == true){
-            Debug.Log(_enemies[0]);
             _enemies.Remove(_enemies[0]);
             _towerView._hasTarget = false;
         }

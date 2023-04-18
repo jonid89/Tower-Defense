@@ -1,11 +1,4 @@
 
-! Tower shoots to enemy spawner when enemy killed (fix this) 
-
-Enemies name 
-
-
-Add tower config on projectileView in ObjectPooler <- could we pass Script config as a general parameter on the SpawnObject function?
-
 
 Put spawn rate variable onto EnemyConfig scriptable object script.... √
 
@@ -14,6 +7,19 @@ fire rate should be fire interval √
 tower config √
 projectile duration to hit enemy √
 fire rate √
+
+! Tower shoots to enemy spawner when enemy killed (fix this) √
+
+
+5 enemies con Spawner config but only 3 appear, and -2 life
+
+Enemies name 
+
+
+Add tower config on projectileView in ObjectPooler <- could we pass Script config as a general parameter on the SpawnObject function?
+
+
+
 
 
 fix this on ProjectileController: _enemy = _towerParent.GetComponent<TowerView>()._towerController.getTarget();

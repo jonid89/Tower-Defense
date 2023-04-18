@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EnemySpawnerConfig Level1
   m_EditorClassIdentifier: 
   _enemiesAmount: 5
-  _enemiesSpawnRate: 3
+  _enemiesSpawnRate: 1

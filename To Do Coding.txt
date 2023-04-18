@@ -16,7 +16,8 @@ projectile duration to hit enemy √
 fire rate √
 
 
-
+fix this on ProjectileController: _enemy = _towerParent.GetComponent<TowerView>()._towerController.getTarget();
+It goes against depency injection
 
 
 Music

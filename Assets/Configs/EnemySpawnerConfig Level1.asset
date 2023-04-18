@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a40d48093390e4e8d8f0d2723d05ef, type: 3}
   m_Name: EnemySpawnerConfig Level1
   m_EditorClassIdentifier: 
-  _enemiesAmount: 3
+  _enemiesAmount: 5
   _enemiesSpawnRate: 3

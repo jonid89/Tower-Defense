@@ -19,6 +19,7 @@ public class EnemySpawnerController : IPooledObject, IDisposable
         _enemySpawnerView = enemySpawnerView;
         _objectPooler = objectPooler;
         OnObjectSpawn();
+        _enemySpawnerView.OnObjectSpawn();
     }
 
 

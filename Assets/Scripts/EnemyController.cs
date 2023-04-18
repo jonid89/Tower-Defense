@@ -77,6 +77,7 @@ public class EnemyController : IPooledObject, IDisposable
             {
                 _enemyView._currentSprites = _enemyView._spriteDead;
                 _path.Kill();
+                _enemyView._isDead = true;
                 _enemyView._spriteRenderer.DOFade(0,2f).OnComplete( () => EndEnemy());
             }
         }

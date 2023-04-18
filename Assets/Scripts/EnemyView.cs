@@ -28,6 +28,7 @@ public class EnemyView : MonoBehaviour, IPooledObject
     public Transform MyTransform{
         get { return this.gameObject.transform;}
     }
+    public bool _isDead;
 
     public void OnObjectSpawn()
     {   

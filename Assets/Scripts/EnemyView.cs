@@ -13,7 +13,6 @@ public class EnemyView : MonoBehaviour, IPooledObject
 
     [SerializeField] public int _maxHealth;
     [SerializeField] public float _timeToFinishPath;
-    public EnemyController _enemyController;
     public EnemyPath _enemyPath;
     [SerializeField] public SpriteRenderer _spriteRenderer;
     [SerializeField] public List<Sprite> _spritesWalkLeft;
@@ -28,7 +27,6 @@ public class EnemyView : MonoBehaviour, IPooledObject
     public Transform MyTransform{
         get { return this.gameObject.transform;}
     }
-    public bool _isDead;
 
     public void OnObjectSpawn()
     {   

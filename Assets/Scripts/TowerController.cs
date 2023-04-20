@@ -10,8 +10,8 @@ public class TowerController : IPooledObject
 {
     private float _cooldown;
     ObjectPooler _objectPooler;
-    private List<EnemyView> _enemies = new List<EnemyView>();
-    private EnemyView _target;
+    private List<EnemyState> _enemies = new List<EnemyState>();
+    private EnemyState _target;
     TowerView _towerView;
     private Collider2D _collider;
     private TowerConfig _towerConfig;
@@ -52,7 +52,7 @@ public class TowerController : IPooledObject
     {
         if (other.CompareTag("Enemy"))
         {
-            EnemyView newEnemy = other.GetComponent<EnemyView>();
+            EnemyState newEnemy = other.GetComponent<EnemyState>();
             _enemies.Add(newEnemy);
             FireIfEnemy();
         }
@@ -60,7 +60,7 @@ public class TowerController : IPooledObject
 
     public void ObjectExitedPerimeter(Collider2D other)
     {
-        EnemyView enemy = other.GetComponent<EnemyView>();
+        EnemyState enemy = other.GetComponent<EnemyState>();
         if (_enemies.Contains(enemy))        
         {
             _enemies.Remove(enemy);
@@ -71,17 +71,18 @@ public class TowerController : IPooledObject
         }        
     }
 
-    public EnemyView getTarget(){
+    public EnemyState getTarget(){
         return _target;
     }
 
     private void GetCurrentTarget()
     {
-        while(_enemies[0] != null && _enemies[0]._isDead == true){
+        while(_enemies.Count > 0 && _enemies[0] != null && _enemies[0].IsDead == true){
             _enemies.Remove(_enemies[0]);
             _towerView._hasTarget = false;
         }
         _target = _enemies.Count > 0 ? _enemies[0] : null;
+
     }
 
     public class Factory : PlaceholderFactory<TowerView, ObjectPooler, TowerController>

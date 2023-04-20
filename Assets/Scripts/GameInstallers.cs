@@ -42,7 +42,7 @@ public class GameInstallers : MonoInstaller
         
         Container.BindInterfacesAndSelfTo<ObjectPooler>().AsSingle().NonLazy();
         
-        Container.BindFactory<EnemyView, EnemyView.Pool, EnemyPath, EnemyController, EnemyController.Factory>();
+        Container.BindFactory<EnemyView, EnemyState, EnemyView.Pool, EnemyPath, EnemyController, EnemyController.Factory>();
         Container.BindMemoryPool<EnemyView, EnemyView.Pool>().FromComponentInNewPrefab(_enemyPrefab).NonLazy();
 
         Container.BindFactory<TowerView, ObjectPooler, TowerController, TowerController.Factory>();

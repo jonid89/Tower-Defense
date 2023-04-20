@@ -12,6 +12,7 @@ public class EnemyController : IPooledObject, IDisposable
     private int _currentHealth;
     private float _timeToFinishPath;
     EnemyView _enemyView;
+    EnemyState _enemyState;
     EnemyView.Pool _enemyViewPool;
     EnemyPath _enemyPath;
     private Transform _transform;
@@ -22,16 +23,18 @@ public class EnemyController : IPooledObject, IDisposable
     private Vector2 _finalPoint = new Vector2();
     private Vector2 _direction = new Vector2();
 
-    public EnemyController(EnemyView enemyView, EnemyView.Pool enemyViewPool, LevelManagerController levelManagerController, EnemyPath enemyPath) {
+    public EnemyController(EnemyView enemyView, EnemyState enemyState, EnemyView.Pool enemyViewPool, LevelManagerController levelManagerController, EnemyPath enemyPath) {
         _enemyView = enemyView;
+        _enemyState = enemyState;
         _enemyViewPool = enemyViewPool;
         _levelManagerController = levelManagerController;
         _enemyPath = enemyPath;
-        _enemyView._enemyController = this;
+        _enemyState._enemyController = this;
         _currentHealth = _enemyView._maxHealth;
         _enemyView._enemyPath = _enemyPath;
         _timeToFinishPath = _enemyView._timeToFinishPath;
         _enemyView.OnObjectSpawn();
+        _enemyState.OnObjectSpawn();
         _transform = _enemyView.MyTransform;
         OnObjectSpawn();
     }
@@ -77,7 +80,7 @@ public class EnemyController : IPooledObject, IDisposable
             {
                 _enemyView._currentSprites = _enemyView._spriteDead;
                 _path.Kill();
-                _enemyView._isDead = true;
+                _enemyState.SetDead(true);
                 _enemyView._spriteRenderer.DOFade(0,2f).OnComplete( () => EndEnemy());
             }
         }
@@ -103,7 +106,7 @@ public class EnemyController : IPooledObject, IDisposable
         //Debug.Log("Dispose() called");
     }
 
-    public class Factory : PlaceholderFactory<EnemyView, EnemyView.Pool, EnemyPath, EnemyController>
+    public class Factory : PlaceholderFactory<EnemyView, EnemyState, EnemyView.Pool, EnemyPath, EnemyController>
     {
     }
 }

@@ -1,4 +1,25 @@
 
+expose isDead in EnemyState as IObservable <- this way you can subscribe to the projectile controller prematurely
+
+
+
+5 enemies con Spawner config but only 3 appear, and -2 life
+
+Enemies name 
+
+
+Add tower config on projectileView in ObjectPooler <- could we pass Script config as a general parameter on the SpawnObject function?
+
+Improve: 
+
+=> _enemyView._spriteRenderer.DOFade(0,2f).OnComplete( () => EndEnemy());
+
+=> fix this on ProjectileController: _enemy = _towerParent.GetComponent<TowerView>()._towerController.getTarget();
+It goes against depency injection
+
+
+
+
 
 Put spawn rate variable onto EnemyConfig scriptable object script.... √
 
@@ -11,19 +32,9 @@ fire rate √
 ! Tower shoots to enemy spawner when enemy killed (fix this) √
 
 
-5 enemies con Spawner config but only 3 appear, and -2 life
-
-Enemies name 
-
-
-Add tower config on projectileView in ObjectPooler <- could we pass Script config as a general parameter on the SpawnObject function?
 
 
 
-
-
-fix this on ProjectileController: _enemy = _towerParent.GetComponent<TowerView>()._towerController.getTarget();
-It goes against depency injection
 
 
 Music

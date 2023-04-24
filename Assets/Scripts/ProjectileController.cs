@@ -34,7 +34,6 @@ public class ProjectileController : IPooledObject
         _enemyPosition = _enemy.transform.position;
         Vector3 projectilePos = _projectileView.transform.position;
         var startingPosition = _towerParent.transform.position;
-        Debug.Log(_enemy);
 
         DOTween.To(x=>{ _projectileView.transform.position = Vector3.Lerp(startingPosition, _enemy.gameObject.transform.position, x);},
             0,1, _projectilePathDuration)

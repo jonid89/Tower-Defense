@@ -1,11 +1,9 @@
 
+
 expose isDead in EnemyState as IObservable <- this way you can subscribe to the projectile controller prematurely
 
 
-
-5 enemies con Spawner config but only 3 appear, and -2 life
-
-Enemies name 
+Enemies name , Should I number them? Should the Spawner give them a number/name, or should the ObjectPooler name them ?And what happens
 
 
 Add tower config on projectileView in ObjectPooler <- could we pass Script config as a general parameter on the SpawnObject function?
@@ -15,7 +13,11 @@ Improve:
 => _enemyView._spriteRenderer.DOFade(0,2f).OnComplete( () => EndEnemy());
 
 => fix this on ProjectileController: _enemy = _towerParent.GetComponent<TowerView>()._towerController.getTarget();
-It goes against depency injection
+It goes against depency injection 
+Options --> 
+- Should we get the gameobject returned when we call the ObjectPooler, so that the Tower can pass the enemy to the controller? 
+- Or should we overload the SpawnObject function so that the Tower can pass the enemy the to the controller?
+- Could we add a callback function to SpawnObject?
 
 
 

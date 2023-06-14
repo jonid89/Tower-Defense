@@ -1,12 +1,24 @@
 
+remove enemyView.Pool from enemyController, have an interface on enemyView and call from enemyController _enemyView.Despawn(); and on enemyView Despawn() add enemyView.Pool.Despawn(this);
+
+
+Separate ObjectPooler into a pooler for each type (enemy, projectile, tower)
+
+
+
+
 
 expose isDead in EnemyState as IObservable <- this way you can subscribe to the projectile controller prematurely
+
+Getting NullReferenceException: Object reference not set to an instance of an object
+EnemyState.OnObjectSpawn () (at Assets/Scripts/EnemyState.cs:16)
 
 
 Enemies name , Should I number them? Should the Spawner give them a number/name, or should the ObjectPooler name them ?And what happens
 
 
 Add tower config on projectileView in ObjectPooler <- could we pass Script config as a general parameter on the SpawnObject function?
+
 
 Improve: 
 
@@ -18,6 +30,8 @@ Options -->
 - Should we get the gameobject returned when we call the ObjectPooler, so that the Tower can pass the enemy to the controller? 
 - Or should we overload the SpawnObject function so that the Tower can pass the enemy the to the controller?
 - Could we add a callback function to SpawnObject?
+
+
 
 
 
